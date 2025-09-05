@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkinsonDetect - Advanced Motion Analysis for Early Detection</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="Revolutionary autoencoder-based machine learning system for early Parkinson's disease detection using motion sensor data with 94.3% accuracy.">
+    <meta name="keywords" content="Parkinson's disease, early detection, motion analysis, machine learning, healthcare, medical technology">
+    <meta name="author" content="ParkinsonDetect Research Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ParkinsonDetect - Early Parkinson's Detection">
+    <meta property="og:description" content="Advanced motion analysis for early detection of Parkinson's disease using AI">
+    <meta property="og:type" content="website">
+    
+    <style>
+    </style>
+</head>
+<body>
+    <!-- Professional Loading Spinner -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="logo-loader">
+                <div class="logo-icon">🧠</div>
+                <div class="logo-text">ParkinsonDetect</div>
+            </div>
+            <div class="spinner-container">
+                <div class="spinner-modern"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="loading-text">Chargement de la plateforme...</div>
+            <div class="loading-subtext">IA médicale • Détection précoce</div>
+        </div>
+    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-contact">
+                    <span>📧 research@parkinsondetect.com</span>
+                </div>
+                <div class="header-social">
+                    <span style="opacity: 0.9; font-style: italic;">Sciences de Données • Génie Logiciel et Réseaux</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <a href="#home" class="logo scroll-link">
+                    <div class="logo-icon">🧠</div>
+                    <div>
+                        <div>ParkinsonDetect</div>
+                        <div style="font-size: 0.6rem; opacity: 0.8; font-weight: normal;">Détection précoce de la maladie de Parkinson</div>
+                    </div>
+                </a>
+                
+                <nav class="nav-menu">
+                    <a href="#home" class="nav-link scroll-link">Accueil</a>
+                    <a href="#technologie" class="nav-link scroll-link">Technologie</a>
+                    <a href="#feuille-de-route" class="nav-link scroll-link">Feuille de route</a>
+                    <a href="#a-propos" class="nav-link scroll-link">À propos</a>
+                    <a href="analyze.html" class="nav-link">Analyse</a>
+                    <a href="#contact" class="nav-link scroll-link">Contact</a>
+                </nav>
+                
+                <!-- User Avatar Dropdown (shown when logged in) -->
+                <div class="user-avatar-container" id="userAvatarContainer">
+                    <div class="user-avatar" id="userAvatar">
+                        <span id="avatarInitials">SJ</span>
+                    </div>
+                    <div class="avatar-dropdown" id="avatarDropdown">
+                        <div class="dropdown-header">
+                            <div class="dropdown-user-name" id="dropdownUserName">Dr. Sarah Johnson</div>
+                            <div class="dropdown-user-email" id="dropdownUserEmail">sarah.johnson@example.com</div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item" onclick="showDashboard()">
+                                <i>📈</i> Tableau de bord
+                            </a>
+                            <a href="#" class="dropdown-item" onclick="showProfile()">
+                                <i>👤</i> Profil
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item dropdown-logout" onclick="ParkinsonDetect.logout()">
+                                <i>🚪</i> Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-actions" id="headerActions">
+                    <a href="#" class="login-btn" onclick="ParkinsonDetect.showLoginModal()">Connexion</a>
+                    <a href="#" class="signup-btn" onclick="ParkinsonDetect.showSignupModal()">Inscription</a>
+                </div>
+                
+                <button class="mobile-menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Détection Précoce de Parkinson</h1>
+                <p class="hero-subtitle">
+                    Système révolutionnaire d'apprentissage automatique basé sur les autoencodeurs qui analyse les données d'accéléromètre et de gyroscope 
+                    pour détecter les marqueurs de la maladie de Parkinson avec une précision sans précédent.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">94.3%</div>
+                        <div class="stat-label">Précision de détection</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">3-5</div>
+                        <div class="stat-label">Années de détection anticipée</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Paramètres de capteurs</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1200+</div>
+                        <div class="stat-label">Dataset de patients</div>
+                    </div>
+                </div>
+                
+                <p style="margin: 20px 0; opacity: 0.9;">
+                    <strong>Le saviez-vous?</strong> La détection précoce peut améliorer les résultats du traitement de 
+                    <strong>70%</strong> et améliorer considérablement la qualité de vie.
+                </p>
+                
+                <a href="analyze.html" class="cta-button">Commencer l'analyse</a>
+                <a href="#" class="cta-button cta-secondary" onclick="showDashboard()">Voir mes résultats</a>
+            </div>
+        </section>
+        
+        <!-- Understanding Parkinson's Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Comprendre la Maladie de Parkinson</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="upload-icon">🧠</div>
+                            <h3 class="card-title">Qu'est-ce que la maladie de Parkinson?</h3>
+                        </div>
+                        <p>La maladie de Parkinson est un trouble neurodégénératif progressif qui affecte le mouvement. Elle survient lorsque les cellules nerveuses du cerveau qui produisent la dopamine sont endommagées ou meurent.</p>
+                        
+                        <div class="result-details" style="margin-top: 20px;">
+                            <div class="detail-item">
+                                <div class="detail-value">10M+</div>
+                                <div>Personnes affectées</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value">50-65</div>
+                                <div>Âge typique</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="upload-icon">⚙️</div>
+                            <h3 class="card-title">Symptômes moteurs</h3>
+                        </div>
+                        <p>Les principaux symptômes incluent les tremblements, la bradykinésie (lenteur des mouvements), la rigidité musculaire et l'instabilité posturale.</p>
+                        
+                        <ul style="margin-top: 15px; padding-left: 20px;">
+                            <li>Tremblements au repos</li>
+                            <li>Mouvements lents</li>
+                            <li>Raideur musculaire</li>
+                            <li>Problèmes d'équilibre</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="upload-icon">🎯</div>
+                            <h3 class="card-title">Détection précoce</h3>
+                        </div>
+                        <p>La détection précoce permet un traitement plus efficace et une meilleure qualité de vie. Notre technologie peut détecter des signes subtils avant les symptômes cliniques.</p>
+                        
+                        <div class="result-details" style="margin-top: 20px;">
+                            <div class="detail-item">
+                                <div class="detail-value">70%</div>
+                                <div>Amélioration traitement</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value">3-5</div>
+                                <div>Années d'avance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Research Impact Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Impact de la Recherche</h2>
+                <div class="card">
+                    <div class="card-grid">
+                        <div>
+                            <h3 style="color: #667eea; margin-bottom: 15px;">Contributions Scientifiques</h3>
+                            <ul style="padding-left: 20px; line-height: 1.8;">
+                                <li>Développement d'algorithmes d'autoencodeurs pour la détection d'anomalies</li>
+                                <li>Analyse des schémas de mouvement à partir de capteurs inertiels</li>
+                                <li>Validation sur le dataset PADS de référence internationale</li>
+                                <li>Optimisation des paramètres de fenêtrage et de prétraitement</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 style="color: #667eea; margin-bottom: 15px;">Applications Cliniques</h3>
+                            <ul style="padding-left: 20px; line-height: 1.8;">
+                                <li>Outil de dépistage non-invasif et accessible</li>
+                                <li>Surveillance continue des patients à domicile</li>
+                                <li>Support à la décision médicale</li>
+                                <li>Réduction des coûts de diagnostic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technologie" class="section">
+        <div class="container">
+            <h2 class="section-title">Notre Technologie IA</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="upload-icon">📱</div>
+                        <h3 class="card-title">Capteurs de Mouvement</h3>
+                    </div>
+                    <p>Analyse des données d'accéléromètre et de gyroscope pour capturer les schémas de mouvement précis et les caractéristiques des tremblements.</p>
+                    
+                    <div class="result-details" style="margin-top: 20px;">
+                        <div class="detail-item">
+                            <div class="detail-value">20Hz</div>
+                            <div>Fréquence</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">6</div>
+                            <div>Axes Capteurs</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="upload-icon">🧬</div>
+                        <h3 class="card-title">Réseaux Autoencodeurs</h3>
+                    </div>
+                    <p>Notre modèle d'apprentissage profond utilise des réseaux de neurones autoencodeurs pour détecter les anomalies subtiles des schémas de mouvement.</p>
+                    
+                    <div class="result-details" style="margin-top: 20px;">
+                        <div class="detail-item">
+                            <div class="detail-value">1.376</div>
+                            <div>Seuil</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">94.3%</div>
+                            <div>Précision</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="upload-icon">📈</div>
+                        <h3 class="card-title">Validation Clinique</h3>
+                    </div>
+                    <p>Validé sur le dataset PADS avec plus de 1200 dossiers de patients, atteignant 94.3% de précision dans la détection précoce.</p>
+                    
+                    <div class="result-details" style="margin-top: 20px;">
+                        <div class="detail-item">
+                            <div class="detail-value">1200+</div>
+                            <div>Patients</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">PADS</div>
+                            <div>Dataset</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feuille de Route Section -->
+    <section id="feuille-de-route" class="section">
+        <div class="container">
+            <h2 class="section-title">Feuille de Route & Perspectives</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="upload-icon">📱</div>
+                        <h3 class="card-title">Applications Mobiles</h3>
+                    </div>
+                    <p>Développement d'applications iOS et Android pour la collecte de données en temps réel et l'analyse instantanée.</p>
+                    
+                    <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 8px;">
+                        <strong style="color: #1976d2;">• Phase:</strong> En développement<br>
+                        <strong style="color: #1976d2;">• Lancement:</strong> Q2 2025
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="upload-icon">☁️</div>
+                        <h3 class="card-title">Plateforme Cloud</h3>
+                    </div>
+                    <p>Infrastructure cloud pour le traitement à grande échelle et l'intégration avec les systèmes hospitaliers.</p>
+                    
+                    <div style="margin-top: 15px; padding: 10px; background: #fff3e0; border-radius: 8px;">
+                        <strong style="color: #f57c00;">• Phase:</strong> Planifié<br>
+                        <strong style="color: #f57c00;">• Lancement:</strong> Q4 2025
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="upload-icon">🤖</div>
+                        <h3 class="card-title">IA Avancée</h3>
+                    </div>
+                    <p>Intégration de modèles de deep learning plus sophistiqués et analyse multimodale des données biomédicales.</p>
+                    
+                    <div style="margin-top: 15px; padding: 10px; background: #f3e5f5; border-radius: 8px;">
+                        <strong style="color: #7b1fa2;">• Phase:</strong> Recherche<br>
+                        <strong style="color: #7b1fa2;">• Lancement:</strong> 2026
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="upload-icon">🌐</div>
+                        <h3 class="card-title">Expansion Internationale</h3>
+                    </div>
+                    <p>Déploiement dans les hôpitaux et cliniques en Europe, Amérique du Nord et Asie avec support multilingue.</p>
+                    
+                    <div style="margin-top: 15px; padding: 10px; background: #e8f5e8; border-radius: 8px;">
+                        <strong style="color: #2e7d32;">• Phase:</strong> Évaluation<br>
+                        <strong style="color: #2e7d32;">• Lancement:</strong> 2025-2027
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À Propos Section -->
+    <section id="a-propos" class="section">
+        <div class="container">
+            <h2 class="section-title">À propos de ParkinsonDetect</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="card-title">Notre Mission</h3>
+                    <p>ParkinsonDetect est un projet de recherche académique dédié à l'innovation dans la détection précoce de la maladie de Parkinson. Notre équipe multidisciplinaire combine expertise en sciences des données, génie logiciel et recherche médicale.</p>
+                    
+                    <div class="result-details" style="margin-top: 20px;">
+                        <div class="detail-item">
+                            <div class="detail-value">2024</div>
+                            <div>Année de création</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">5+</div>
+                            <div>Chercheurs</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Impact Recherche</h3>
+                    <p>Nos travaux contribuent à l'avancement des connaissances en intelligence artificielle appliquée à la santé, avec un focus sur l'accessibilité et la précision diagnostique.</p>
+                    
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Publications scientifiques en cours</li>
+                        <li>Collaboration avec centres médicaux</li>
+                        <li>Open source et reproductible</li>
+                        <li>Formation étudiants chercheurs</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Éthique & Conformité</h3>
+                    <p>Nous nous engageons à respecter les plus hauts standards éthiques en recherche médicale et protection des données personnelles.</p>
+                    
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                        <strong style="color: #1976d2;">✓</strong> Conformité RGPD<br>
+                        <strong style="color: #1976d2;">✓</strong> Approbation comité éthique<br>
+                        <strong style="color: #1976d2;">✓</strong> Transparence algorithmique
+                    </div>
+                </div>
+            </div>
+            
+            <!-- About Parkinson's Disease -->
+            <div style="margin-top: 60px;">
+                <h2 class="section-title">À propos de la Maladie de Parkinson</h2>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 class="card-title">Qu'est-ce que la maladie de Parkinson?</h3>
+                        <p>La maladie de Parkinson est un trouble neurodégénératif progressif qui affecte le mouvement. Elle survient lorsque les cellules nerveuses du cerveau qui produisent la dopamine sont endommagées ou meurent.</p>
+                        
+                        <h4 style="margin-top: 20px; color: #667eea;">Statistiques Clés:</h4>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Affecte plus de 10 millions de personnes dans le monde</li>
+                            <li>Deuxième trouble neurodégénératif le plus courant</li>
+                            <li>Généralement diagnostiqué entre 50 et 65 ans</li>
+                            <li>Les hommes sont 1,5 fois plus susceptibles de développer la maladie</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Symptômes Principaux</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="detail-item" style="margin-bottom: 15px;">
+                                <div class="detail-value" style="font-size: 1.1rem;">Tremblements</div>
+                                <p style="font-size: 0.9rem; margin-top: 5px;">Secousses involontaires au repos</p>
+                            </div>
+                            <div class="detail-item" style="margin-bottom: 15px;">
+                                <div class="detail-value" style="font-size: 1.1rem;">Bradykinésie</div>
+                                <p style="font-size: 0.9rem; margin-top: 5px;">Lenteur des mouvements</p>
+                            </div>
+                            <div class="detail-item" style="margin-bottom: 15px;">
+                                <div class="detail-value" style="font-size: 1.1rem;">Rigidité</div>
+                                <p style="font-size: 0.9rem; margin-top: 5px;">Raideur musculaire</p>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value" style="font-size: 1.1rem;">Instabilité Posturale</div>
+                                <p style="font-size: 0.9rem; margin-top: 5px;">Problèmes d'équilibre</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3 class="card-title">Importance de la Détection Précoce</h3>
+                        <p>La détection précoce permet d'améliorer significativement les résultats du traitement et la qualité de vie des patients.</p>
+                        
+                        <div class="result-details" style="margin-top: 20px;">
+                            <div class="detail-item">
+                                <div class="detail-value">70%</div>
+                                <div>Amélioration Traitement</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value">3-5</div>
+                                <div>Années d'Avance</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value">80%</div>
+                                <div>Qualité de Vie</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Medical Disclaimer -->
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 15px; padding: 25px; margin-top: 40px; border-left: 4px solid #f39c12;">
+                    <h4 style="color: #856404; margin-bottom: 15px; display: flex; align-items: center;">
+                        <span style="margin-right: 10px; font-size: 1.2rem;">⚠️</span>
+                        Avertissement Médical Important
+                    </h4>
+                    <p style="color: #856404; margin: 0; line-height: 1.6;">
+                        <strong>Cet outil est destiné à des fins de recherche et d'éducation uniquement.</strong> Il n'est pas conçu pour diagnostiquer, traiter, guérir ou prévenir une quelconque maladie. Les résultats ne doivent pas être utilisés comme substitut à un avis, diagnostic ou traitement médical professionnel. Consultez toujours un professionnel de la santé qualifié pour toute question concernant une condition médicale.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="card-title">Informations de Contact</h3>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <span style="margin-right: 15px; font-size: 1.2rem;">📧</span>
+                            <div>
+                                <strong>Email Recherche</strong><br>
+                                <a href="mailto:research@parkinsondetect.com" style="color: #667eea;">research@parkinsondetect.com</a>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <span style="margin-right: 15px; font-size: 1.2rem;">🏫</span>
+                            <div>
+                                <strong>Institution</strong><br>
+                                Sciences de Données • Génie Logiciel et Réseaux
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                            <span style="margin-right: 15px; font-size: 1.2rem;">💼</span>
+                            <div>
+                                <strong>Collaborations</strong><br>
+                                Ouvert aux partenariats académiques et cliniques
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="card-title">Formulaire de Contact</h3>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="contactName">Nom complet</label>
+                            <input type="text" id="contactName" name="name" class="form-input" placeholder="Votre nom complet" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" name="email" class="form-input" placeholder="votre.email@exemple.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contactSubject">Sujet</label>
+                            <select id="contactSubject" name="subject" class="form-input" required>
+                                <option value="">Choisissez un sujet</option>
+                                <option value="collaboration">Collaboration de recherche</option>
+                                <option value="technique">Question technique</option>
+                                <option value="data">Partage de données</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="message" class="form-input" rows="5" placeholder="Votre message..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Envoyer le Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="upload-icon">📊</div>
+                            <h3 class="card-title">Data Collection</h3>
+                        </div>
+                        <p>Motion data is collected from accelerometer and gyroscope sensors in smartphones or wearable devices. The system captures precise movement patterns during daily activities.</p>
+                        
+                        <div class="result-details" style="margin-top: 20px;">
+                            <div class="detail-item">
+                                <div class="detail-value">20Hz</div>
+                                <div>Sampling Rate</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value">6</div>
+                                <div>Sensor Axes</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="upload-icon">🔧</div>
+                            <h3 class="card-title">Preprocessing</h3>
+                        </div>
+                        <p>Raw sensor data undergoes normalization and windowing. Data is segmented into 100-sample windows with 50% overlap to ensure comprehensive pattern analysis.</p>
+                        
+                        <div class="result-details" style="margin-top: 20px;">
+                            <div class="detail-item">
+                                <div class="detail-value">100</div>
+                                <div>Window Size</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value">50%</div>
+                                <div>Overlap</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="upload-icon">🧠</div>
+                            <h3 class="card-title">Autoencoder Analysis</h3>
+                        </div>
+                        <p>Our deep learning autoencoder model reconstructs normal movement patterns. Higher reconstruction errors indicate potential abnormalities associated with Parkinson's disease.</p>
+                        
+                        <div class="result-details" style="margin-top: 20px;">
+                            <div class="detail-item">
+                                <div class="detail-value">1.376</div>
+                                <div>Threshold</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-value">94.3%</div>
+                                <div>Accuracy</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PADS Dataset Information -->
+                <div class="card" style="margin-top: 40px;">
+                    <h3 class="card-title">PADS Dataset Validation</h3>
+                    <p>Our model is trained and validated using the Parkinson's Disease Smartwatch Dataset (PADS), ensuring clinical relevance and accuracy.</p>
+                    
+                    <div class="card-grid" style="margin-top: 30px;">
+                        <div class="detail-item">
+                            <div class="detail-value">1200+</div>
+                            <div>Patient Records</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">Mixed</div>
+                            <div>Demographics</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">Clinical</div>
+                            <div>Validation</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">Peer</div>
+                            <div>Reviewed</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Understanding Results -->
+                <div class="card" style="margin-top: 40px;">
+                    <h3 class="card-title">Understanding Your Results</h3>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4 style="color: #27ae60;">Healthy Pattern (Score < 1.376)</h4>
+                            <p>Low reconstruction error indicates normal movement patterns consistent with healthy motor function.</p>
+                        </div>
+                        <div class="card">
+                            <h4 style="color: #e74c3c;">Abnormal Pattern (Score > 1.376)</h4>
+                            <p>High reconstruction error suggests movement anomalies that may indicate early Parkinson's symptoms.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8d7da; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #e74c3c;">
+                        <h4 style="color: #721c24;">Important Note</h4>
+                        <p style="color: #721c24; margin: 0;">This analysis is for research purposes only. Abnormal results should be discussed with a qualified healthcare professional for proper evaluation and diagnosis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="analysis-section">
+            <div class="container">
+                <h2 class="section-title">Motion Sensor Analysis</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto 40px;">
+                    Upload your sensor data ZIP file containing accelerometer.csv and gyroscope.csv files for analysis.
+                </p>
+                
+                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">Click to upload sensor data</div>
+                    <div class="upload-subtext">ZIP file containing accelerometer.csv and gyroscope.csv (Max 50MB)</div>
+                    <input type="file" id="fileInput" class="file-input" accept=".zip" aria-label="Sélectionner un fichier ZIP contenant les données de capteur">
+                </div>
+                
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" id="analyzeBtn" disabled>
+                        Analyze Motion Data
+                    </button>
+                </div>
+                
+                <div class="loading" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p>Analyzing your motion data...</p>
+                    <p style="font-size: 0.9rem; color: #666;">Processing accelerometer and gyroscope patterns</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="results-section">
+            <div class="container">
+                <div class="result-card" id="resultCard">
+                    <div class="result-header">
+                        <h3>Analysis Results</h3>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="result-score" id="resultLabel">Healthy</div>
+                        <p style="margin-bottom: 20px;">Reconstruction Score: <strong id="scoreValue">0.094</strong></p>
+                        <p style="color: #666; margin-bottom: 30px;">
+                            Based on autoencoder analysis of your motion patterns
+                        </p>
+                    </div>
+                    
+                    <div class="result-details">
+                        <div class="detail-item">
+                            <div class="detail-value" id="windowsCount">3</div>
+                            <div>Analysis Windows</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value" id="thresholdValue">1.376</div>
+                            <div>Detection Threshold</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">20Hz</div>
+                            <div>Sampling Rate</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-value">100</div>
+                            <div>Window Size</div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="btn btn-success" onclick="ParkinsonDetect.saveResults()">Save to Profile</button>
+                        <button class="btn btn-secondary" onclick="ParkinsonDetect.downloadReport()">Download Report</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<!-- Authentication Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="ParkinsonDetect.closeModal('loginModal')">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Se connecter à votre compte</h2>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="loginEmail">Adresse e-mail</label>
+                    <input type="email" id="loginEmail" name="email" class="form-input" placeholder="Entrez votre adresse e-mail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" name="password" class="form-input" placeholder="Entrez votre mot de passe" required>
+                </div>
+                
+                <div class="checkbox-group" style="margin-bottom: 20px;">
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Se souvenir de moi</label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;">Se connecter</button>
+                
+                <p style="text-align: center; color: #666;">
+                    Pas de compte? 
+                    <a href="#" onclick="ParkinsonDetect.closeModal('loginModal'); ParkinsonDetect.showSignupModal();" style="color: #667eea;">Créer un compte</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="ParkinsonDetect.closeModal('signupModal')">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Créer votre compte</h2>
+            
+            <form id="signupForm">
+                <div class="form-group">
+                    <label class="form-label" for="signupName">Nom complet</label>
+                    <input type="text" id="signupName" name="name" class="form-input" placeholder="Entrez votre nom complet" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="signupEmail">Adresse e-mail</label>
+                    <input type="email" id="signupEmail" name="email" class="form-input" placeholder="Entrez votre adresse e-mail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="signupDob">Date de naissance</label>
+                    <input type="date" id="signupDob" name="dateOfBirth" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="signupPassword">Mot de passe</label>
+                    <input type="password" id="signupPassword" name="password" class="form-input" placeholder="Minimum 8 caractères" required minlength="8">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="signupConfirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" id="signupConfirmPassword" name="confirmPassword" class="form-input" placeholder="Confirmez votre mot de passe" required>
+                </div>
+                
+                <div class="checkbox-group" style="margin-bottom: 20px;">
+                    <input type="checkbox" name="terms" id="terms" required>
+                    <label for="terms">J'accepte les <a href="#" style="color: #667eea;">Conditions d'utilisation</a> et la <a href="#" style="color: #667eea;">Politique de confidentialité</a></label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;">Créer le compte</button>
+                
+                <p style="text-align: center; color: #666;">
+                    Déjà un compte? 
+                    <a href="#" onclick="ParkinsonDetect.closeModal('signupModal'); ParkinsonDetect.showLoginModal();" style="color: #667eea;">Se connecter</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ParkinsonDetect</h3>
+                    <p style="color: #bdc3c7; line-height: 1.6; margin-bottom: 20px;">
+                        Plateforme d'intelligence artificielle pour la détection précoce de la maladie de Parkinson utilisant l'analyse des données de capteurs de mouvement.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" title="GitHub">💻</a>
+                        <a href="#" title="Research Papers">📄</a>
+                        <a href="#" title="LinkedIn">💼</a>
+                        <a href="#" title="Contact">📧</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recherche</h3>
+                    <a href="#">Méthodologie</a>
+                    <a href="#">Dataset PADS</a>
+                    <a href="#">Publications</a>
+                    <a href="#">Validation Clinique</a>
+                    <a href="#">Résultats</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Plateforme</h3>
+                    <a href="#">Analyse de Mouvement</a>
+                    <a href="#">API Documentation</a>
+                    <a href="#">Guide d'utilisation</a>
+                    <a href="#">Télécharger App</a>
+                    <a href="#">Intégrations</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Centre d'aide</a>
+                    <a href="#">Contact Équipe</a>
+                    <a href="#">Support Technique</a>
+                    <a href="#">Formation</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <div>
+                        <p>&copy; 2024 ParkinsonDetect. Projet de recherche en IA médicale.</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">
+                            Sciences de Données • Génie Logiciel et Réseaux • Université
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 0.9rem;">
+                        <span>🏆 94.3% Précision</span>
+                        <span>🔒 Sécurisé</span>
+                        <span>⚙️ Open Source</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
