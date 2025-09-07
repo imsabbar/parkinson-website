@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "user_demo_001",
+      "name": "Test User",
+      "email": "test@example.com",
+      "dateOfBirth": "1990-01-01",
+      "password": "-1867062142_dGVzdA==",
+      "joinDate": "2024-01-01T00:00:00.000Z",
+      "medicalId": null,
+      "profile": {
+        "totalAnalyses": 0,
+        "lastAnalysis": null,
+        "averageScore": 0,
+        "riskAssessments": { "healthy": 0, "atRisk": 0 }
+      },
+      "analyses": [],
+      "settings": {
+        "notifications": true,
+        "dataRetention": true,
+        "privacyLevel": "standard"
+      },
+      "metadata": {
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "lastLogin": null,
+        "loginCount": 0,
+        "ipAddress": null
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-01-01T00:00:00.000Z",
+    "totalUsers": 1,
+    "dataSchema": "v1"
+  },
+  "config": {
+    "maxUsers": 10000,
+    "passwordMinLength": 8,
+    "sessionExpiryDays": 30,
+    "analysisRetentionDays": 365
+  }
+}

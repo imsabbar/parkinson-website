@@ -10,9 +10,10 @@
     
     <!-- Custom Stylesheets -->
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/analyze.css">
     
     <!-- SEO and Meta Tags -->
-    <meta name="description" content="Analyse de données de mouvement pour la détection précoce de la maladie de Parkinson utilisant l'intelligence artificielle.">
+    <meta name="description" content="Analyse de données de mouvement pour la détection précoce de la maladie de Parkinson utilisant des technologies avancées.">
     <meta name="keywords" content="Parkinson's disease, motion analysis, machine learning, healthcare, medical technology">
     <meta name="author" content="ParkinsonDetect Research Team">
     
@@ -73,18 +74,15 @@
                 <!-- User Avatar Dropdown (shown when logged in) -->
                 <div class="user-avatar-container" id="userAvatarContainer">
                     <div class="user-avatar" id="userAvatar">
-                        <span id="avatarInitials">SJ</span>
+                        <span id="avatarInitials">U</span>
                     </div>
                     <div class="avatar-dropdown" id="avatarDropdown">
                         <div class="dropdown-header">
-                            <div class="dropdown-user-name" id="dropdownUserName">Dr. Sarah Johnson</div>
-                            <div class="dropdown-user-email" id="dropdownUserEmail">sarah.johnson@example.com</div>
+                            <div class="dropdown-user-name" id="dropdownUserName">Utilisateur</div>
+                            <div class="dropdown-user-email" id="dropdownUserEmail">user@example.com</div>
                         </div>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item" onclick="showDashboard()">
-                                <i>📈</i> Tableau de bord
-                            </a>
-                            <a href="#" class="dropdown-item" onclick="showProfile()">
+                            <a href="profile.html" class="dropdown-item">
                                 <i>👤</i> Profil
                             </a>
                             <div class="dropdown-divider"></div>
@@ -96,8 +94,8 @@
                 </div>
                 
                 <div class="header-actions" id="headerActions">
-                    <a href="#" class="login-btn" onclick="ParkinsonDetect.showLoginModal()">Connexion</a>
-                    <a href="#" class="signup-btn" onclick="ParkinsonDetect.showSignupModal()">Inscription</a>
+                    <a href="login.html" class="login-btn">Connexion</a>
+                    <a href="signup.html" class="signup-btn">Inscription</a>
                 </div>
                 
                 <button class="mobile-menu">☰</button>
@@ -106,243 +104,197 @@
     </header>
 
     <!-- Main Analysis Section -->
-    <main>
-        <section class="analysis-hero">
+    <main class="fade-in-on-scroll">
+        <section class="analysis-hero fade-in-on-scroll">
             <div class="container">
-                <h1>Analyse de Données de Mouvement</h1>
-                <p style="text-align: center; font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto 40px;">
+                <h1 class="hero-title fade-in-on-scroll">Analyse de Données de Mouvement</h1>
+                <div class="hero-description fade-in-on-scroll">
                     Téléchargez votre fichier ZIP contenant accelerometer.csv et gyroscope.csv pour une analyse avancée 
-                    utilisant notre système d'intelligence artificielle de détection précoce de Parkinson.
-                </p>
+                    utilisant notre système de détection précoce de Parkinson.
+                </div>
             </div>
         </section>
 
-        <section class="analysis-section section">
+        <section class="analysis-section section fade-in-on-scroll">
             <div class="container">
-                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-                    <div class="upload-icon">📁</div>
+                <!-- Modern Login Banner -->
+                <div class="login-info-card stagger-item" id="loginBanner">
+                    <div class="info-card-content">
+                        <div class="info-icon">🚀</div>
+                        <div class="info-text">
+                            <h4>Analyse instantanée disponible</h4>
+                            <p>Vous pouvez analyser vos données immédiatement ou vous connecter pour sauvegarder vos résultats dans votre profil</p>
+                        </div>
+                        <div class="info-actions">
+                            <a href="login.html" class="btn btn-primary btn-sm">Se connecter</a>
+                            <a href="signup.html" class="btn btn-secondary btn-sm">Créer un compte</a>
+                            <button class="info-close" onclick="hideBanner()" title="Masquer cette notification">×</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modern Upload Area -->
+                <div class="upload-area stagger-item" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">🗃️</div>
                     <div class="upload-text">Cliquez pour télécharger les données de capteur</div>
                     <div class="upload-subtext">Fichier ZIP contenant accelerometer.csv et gyroscope.csv (Max 50MB)</div>
                     <input type="file" id="fileInput" class="file-input" accept=".zip" aria-label="Sélectionner un fichier ZIP contenant les données de capteur">
                 </div>
                 
-                <div style="text-align: center; margin-top: 30px;">
+                <div style="text-align: center; margin-top: 30px;" class="stagger-item">
                     <button class="btn btn-primary" id="analyzeBtn" disabled>
-                        Analyser les Données de Mouvement
+                        ✨ Analyser les Données de Mouvement
                     </button>
                 </div>
                 
+                <!-- Enhanced Loading -->
                 <div class="loading" id="loadingSpinner">
                     <div class="spinner"></div>
                     <p>Analyse de vos données de mouvement...</p>
                     <p style="font-size: 0.9rem; color: #666;">Traitement des schémas d'accéléromètre et gyroscope</p>
                 </div>
                 
-                <!-- Results Card -->
-                <div class="result-card" id="resultCard">
-                    <div class="result-header">
-                        <h3>Résultats d'Analyse</h3>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <div class="result-score" id="resultLabel">Sain</div>
-                        <p style="margin-bottom: 20px;">Score de Reconstruction: <strong id="scoreValue">0.094</strong></p>
-                        <p style="color: #666; margin-bottom: 30px;">
-                            Basé sur l'analyse autoencodeur de vos schémas de mouvement
-                        </p>
-                    </div>
-                    
-                    <div class="result-details">
-                        <div class="detail-item">
-                            <div class="detail-value" id="windowsCount">3</div>
-                            <div>Fenêtres d'Analyse</div>
+                <!-- Enhanced Results Card -->
+                <div class="result-card enhanced-result fade-in-on-scroll" id="resultCard">
+                    <!-- Result Header with Animation -->
+                    <div class="result-header-enhanced stagger-item">
+                        <div class="result-status-icon" id="statusIcon">✅</div>
+                        <div class="result-title-section">
+                            <h2 class="result-title">Résultats d'Analyse Médicale</h2>
+                            <p class="result-subtitle">Détection précoce de la maladie de Parkinson</p>
                         </div>
-                        <div class="detail-item">
-                            <div class="detail-value" id="thresholdValue">1.376</div>
-                            <div>Seuil de Détection</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">20Hz</div>
-                            <div>Fréquence d'Échantillonnage</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">100</div>
-                            <div>Taille de Fenêtre</div>
+                        <div class="analysis-badge">
+                            <span class="badge-text">Technologie Médicale</span>
                         </div>
                     </div>
+
+                    <!-- Main Result Display -->
+                    <div class="main-result-container stagger-item">
+                        <div class="result-visualization">
+                            <div class="result-circle-enhanced">
+                                <div class="result-movement-type" id="movementType">Mouvement</div>
+                                <div class="result-classification" id="resultLabel">Normal</div>
+                                <div class="result-confidence">Confiance Élevée</div>
+                            </div>
+                            
+                            <!-- Enhanced Score Meter -->
+                            <div class="score-meter-container-enhanced">
+                                <div class="score-label">Score de Reconstruction</div>
+                                <div class="score-meter-enhanced">
+                                    <div class="score-track">
+                                        <div class="score-indicator" id="scoreIndicator"></div>
+                                        <div class="score-bar-enhanced" id="scoreBar"></div>
+                                    </div>
+                                </div>
+                                <div class="score-value-display">
+                                    <span class="score-number" id="scoreValue">0.094</span>
+                                </div>
+                                <div class="score-interpretation-enhanced" id="scoreInterpretation">
+                                    Score faible indique des mouvements normaux
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Technical Details -->
+                        <div class="technical-details-enhanced stagger-item">
+                            <h4>Détails Techniques de l'Analyse</h4>
+                            
+                            <div class="details-grid">
+                                <div class="detail-card">
+                                    <div class="detail-icon">📊</div>
+                                    <div class="detail-content">
+                                        <div class="detail-value" id="windowsCount">3</div>
+                                        <div class="detail-label">Fenêtres d'Analyse</div>
+                                        <div class="detail-description">Segments de données analysés</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-card">
+                                    <div class="detail-icon">🎯</div>
+                                    <div class="detail-content">
+                                        <div class="detail-value" id="thresholdValue">1.376</div>
+                                        <div class="detail-label">Seuil de Détection</div>
+                                        <div class="detail-description">Limite de classification système</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-card">
+                                    <div class="detail-icon">⚡</div>
+                                    <div class="detail-content">
+                                        <div class="detail-value">20Hz</div>
+                                        <div class="detail-label">Fréquence d'Échantillonnage</div>
+                                        <div class="detail-description">Mesures par seconde</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="detail-card">
+                                    <div class="detail-icon">📏</div>
+                                    <div class="detail-content">
+                                        <div class="detail-value">100</div>
+                                        <div class="detail-label">Taille de Fenêtre</div>
+                                        <div class="detail-description">Points de données par segment</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Analysis Summary -->
+                        <div class="analysis-summary stagger-item">
+                            <h4>Résumé de l'Analyse</h4>
+                            <div class="summary-content" id="summaryContent">
+                                <p class="summary-text">
+                                    L'analyse de vos données de mouvement indique des schémas de mouvement normaux. 
+                                    Le score de reconstruction faible suggère que vos mouvements sont cohérents avec des mouvements sains.
+                                </p>
+                                <div class="analysis-metrics">
+                                    <div class="metric-item">
+                                        <span class="metric-label">Temps d'analyse:</span>
+                                        <span class="metric-value" id="analysisTime">< 2 secondes</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-label">Qualité des données:</span>
+                                        <span class="metric-value quality-good">Excellente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medical Disclaimer -->
+                        <div class="medical-disclaimer stagger-item">
+                            <div class="disclaimer-icon">⚕️</div>
+                            <div class="disclaimer-content">
+                                <strong>Avertissement Médical:</strong>
+                                Ce résultat est à des fins de recherche uniquement et ne remplace pas un diagnostic médical professionnel. 
+                                Consultez toujours un médecin pour une évaluation complète.
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div style="text-align: center; margin-top: 30px;">
-                        <button class="btn btn-success" onclick="ParkinsonDetect.saveResults()">Sauvegarder dans le Profil</button>
-                        <button class="btn btn-secondary" onclick="ParkinsonDetect.downloadReport()">Télécharger Rapport</button>
+                    <!-- Enhanced Action Buttons -->
+                    <div class="result-actions-enhanced stagger-item">
+                        <button class="btn-enhanced btn-save" onclick="saveAnalysisResults()" id="saveResultsBtn" style="display: none;">
+                            <span class="btn-icon">💾</span>
+                            <span class="btn-text">Sauvegarder dans le Profil</span>
+                        </button>
+                        <button class="btn-enhanced btn-download" onclick="downloadReport()">
+                            <span class="btn-icon">📄</span>
+                            <span class="btn-text">Télécharger Rapport Détaillé</span>
+                        </button>
+                        <button class="btn-enhanced btn-login" onclick="window.location.href='login.html'" id="loginToSaveBtn">
+                            <span class="btn-icon">🔐</span>
+                            <span class="btn-text">Se connecter pour sauvegarder</span>
+                        </button>
+                        <button class="btn-enhanced btn-new" onclick="location.reload()">
+                            <span class="btn-icon">🔄</span>
+                            <span class="btn-text">Nouvelle Analyse</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works Section -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Comment Fonctionne l'Analyse</h2>
-                
-                <div class="card-grid">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="upload-icon">📊</div>
-                            <h3 class="card-title">Collecte de Données</h3>
-                        </div>
-                        <p>Les données de mouvement sont collectées à partir des capteurs d'accéléromètre et de gyroscope. Le système capture les schémas de mouvement précis lors des activités quotidiennes.</p>
-                        
-                        <div class="result-details" style="margin-top: 20px;">
-                            <div class="detail-item">
-                                <div class="detail-value">20Hz</div>
-                                <div>Fréquence d'Échantillonnage</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-value">6</div>
-                                <div>Axes de Capteurs</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="upload-icon">🔧</div>
-                            <h3 class="card-title">Prétraitement</h3>
-                        </div>
-                        <p>Les données brutes des capteurs subissent une normalisation et un fenêtrage. Les données sont segmentées en fenêtres de 100 échantillons avec 50% de chevauchement.</p>
-                        
-                        <div class="result-details" style="margin-top: 20px;">
-                            <div class="detail-item">
-                                <div class="detail-value">100</div>
-                                <div>Taille de Fenêtre</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-value">50%</div>
-                                <div>Chevauchement</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="upload-icon">🧠</div>
-                            <h3 class="card-title">Analyse Autoencodeur</h3>
-                        </div>
-                        <p>Notre modèle d'apprentissage profond reconstruit les schémas de mouvement normaux. Des erreurs de reconstruction plus élevées indiquent des anomalies potentielles.</p>
-                        
-                        <div class="result-details" style="margin-top: 20px;">
-                            <div class="detail-item">
-                                <div class="detail-value">1.376</div>
-                                <div>Seuil</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-value">94.3%</div>
-                                <div>Précision</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Understanding Results -->
-                <div class="card" style="margin-top: 40px;">
-                    <h3 class="card-title">Comprendre Vos Résultats</h3>
-                    <div class="card-grid">
-                        <div class="card">
-                            <h4 style="color: #27ae60;">Schéma Sain (Score < 1.376)</h4>
-                            <p>Une erreur de reconstruction faible indique des schémas de mouvement normaux cohérents avec une fonction motrice saine.</p>
-                        </div>
-                        <div class="card">
-                            <h4 style="color: #e74c3c;">Schéma Anormal (Score > 1.376)</h4>
-                            <p>Une erreur de reconstruction élevée suggère des anomalies de mouvement qui peuvent indiquer des symptômes précoces de Parkinson.</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8d7da; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #e74c3c;">
-                        <h4 style="color: #721c24;">Note Importante</h4>
-                        <p style="color: #721c24; margin: 0;">Cette analyse est destinée à des fins de recherche uniquement. Les résultats anormaux doivent être discutés avec un professionnel de la santé qualifié pour une évaluation et un diagnostic appropriés.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </main>
-
-    <!-- Authentication Modals -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="ParkinsonDetect.closeModal('loginModal')">&times;</span>
-            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Se connecter à votre compte</h2>
-            
-            <form id="loginForm">
-                <div class="form-group">
-                    <label class="form-label" for="loginEmail">Adresse e-mail</label>
-                    <input type="email" id="loginEmail" name="email" class="form-input" placeholder="Entrez votre adresse e-mail" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="loginPassword">Mot de passe</label>
-                    <input type="password" id="loginPassword" name="password" class="form-input" placeholder="Entrez votre mot de passe" required>
-                </div>
-                
-                <div class="checkbox-group" style="margin-bottom: 20px;">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Se souvenir de moi</label>
-                </div>
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;">Se connecter</button>
-                
-                <p style="text-align: center; color: #666;">
-                    Pas de compte? 
-                    <a href="#" onclick="ParkinsonDetect.closeModal('loginModal'); ParkinsonDetect.showSignupModal();" style="color: #667eea;">Créer un compte</a>
-                </p>
-            </form>
-        </div>
-    </div>
-    
-    <div id="signupModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="ParkinsonDetect.closeModal('signupModal')">&times;</span>
-            <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Créer votre compte</h2>
-            
-            <form id="signupForm">
-                <div class="form-group">
-                    <label class="form-label" for="signupName">Nom complet</label>
-                    <input type="text" id="signupName" name="name" class="form-input" placeholder="Entrez votre nom complet" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="signupEmail">Adresse e-mail</label>
-                    <input type="email" id="signupEmail" name="email" class="form-input" placeholder="Entrez votre adresse e-mail" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="signupDob">Date de naissance</label>
-                    <input type="date" id="signupDob" name="dateOfBirth" class="form-input" required>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="signupPassword">Mot de passe</label>
-                    <input type="password" id="signupPassword" name="password" class="form-input" placeholder="Minimum 8 caractères" required minlength="8">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-label" for="signupConfirmPassword">Confirmer le mot de passe</label>
-                    <input type="password" id="signupConfirmPassword" name="confirmPassword" class="form-input" placeholder="Confirmez votre mot de passe" required>
-                </div>
-                
-                <div class="checkbox-group" style="margin-bottom: 20px;">
-                    <input type="checkbox" name="terms" id="terms" required>
-                    <label for="terms">J'accepte les <a href="#" style="color: #667eea;">Conditions d'utilisation</a> et la <a href="#" style="color: #667eea;">Politique de confidentialité</a></label>
-                </div>
-                
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 15px;">Créer le compte</button>
-                
-                <p style="text-align: center; color: #666;">
-                    Déjà un compte? 
-                    <a href="#" onclick="ParkinsonDetect.closeModal('signupModal'); ParkinsonDetect.showLoginModal();" style="color: #667eea;">Se connecter</a>
-                </p>
-            </form>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -351,7 +303,7 @@
                 <div class="footer-section">
                     <h3>ParkinsonDetect</h3>
                     <p style="color: #bdc3c7; line-height: 1.6; margin-bottom: 20px;">
-                        Plateforme d'intelligence artificielle pour la détection précoce de la maladie de Parkinson utilisant l'analyse des données de capteurs de mouvement.
+                        Plateforme technologique pour la détection précoce de la maladie de Parkinson utilisant l'analyse des données de capteurs de mouvement.
                     </p>
                     <div class="social-links">
                         <a href="#" title="GitHub">💻</a>
@@ -398,7 +350,7 @@
                         </p>
                     </div>
                     <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 0.9rem;">
-                        <span>🏆 94.3% Précision</span>
+                        <span>🏆 Technologie Validée</span>
                         <span>🔒 Sécurisé</span>
                         <span>⚙️ Open Source</span>
                     </div>
@@ -409,6 +361,92 @@
 
     <!-- JavaScript Files -->
     <script src="assets/js/charts.js"></script>
+    <script src="assets/js/dataManager.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+        // Hide banner function
+        function hideBanner() {
+            const banner = document.getElementById('loginBanner');
+            if (banner) {
+                banner.style.display = 'none';
+                // Store dismissal for current session only (not persistent across reloads)
+                sessionStorage.setItem('loginBannerDismissed', 'true');
+            }
+        }
+
+        // Check if banner should be shown
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide preloader
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }, 800); // Show preloader for 800ms
+            }
+            
+            const isLoggedIn = ParkinsonDetect && ParkinsonDetect.isLoggedIn && ParkinsonDetect.isLoggedIn();
+            const wasDismissedThisSession = sessionStorage.getItem('loginBannerDismissed') === 'true';
+            const banner = document.getElementById('loginBanner');
+            
+            // Hide banner if user is logged in OR if dismissed during this session
+            if (banner && (isLoggedIn || wasDismissedThisSession)) {
+                banner.style.display = 'none';
+            }
+            
+            // Update button visibility based on login status
+            updateSaveButtonVisibility();
+            
+            // Initialize scroll animations
+            if (typeof initScrollAnimations === 'function') {
+                initScrollAnimations();
+            }
+        });
+
+        function updateSaveButtonVisibility() {
+            const isLoggedIn = ParkinsonDetect && ParkinsonDetect.isLoggedIn && ParkinsonDetect.isLoggedIn();
+            const saveBtn = document.getElementById('saveResultsBtn');
+            const loginBtn = document.getElementById('loginToSaveBtn');
+            
+            if (isLoggedIn) {
+                if (saveBtn) saveBtn.style.display = 'inline-block';
+                if (loginBtn) loginBtn.style.display = 'none';
+            } else {
+                if (saveBtn) saveBtn.style.display = 'none';
+                if (loginBtn) loginBtn.style.display = 'inline-block';
+            }
+        }
+
+        function saveAnalysisResults() {
+            if (ParkinsonDetect && ParkinsonDetect.saveResults) {
+                ParkinsonDetect.saveResults();
+            }
+        }
+
+        function downloadReport() {
+            if (ParkinsonDetect && ParkinsonDetect.downloadReport) {
+                ParkinsonDetect.downloadReport();
+            } else {
+                // Fallback download functionality
+                const resultData = {
+                    score: document.getElementById('scoreValue')?.textContent || 'N/A',
+                    result: document.getElementById('resultLabel')?.textContent || 'N/A',
+                    windows: document.getElementById('windowsCount')?.textContent || 'N/A',
+                    threshold: document.getElementById('thresholdValue')?.textContent || 'N/A',
+                    date: new Date().toISOString()
+                };
+                
+                const dataStr = JSON.stringify(resultData, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(dataBlob);
+                link.download = `parkinson-analysis-${new Date().toISOString().split('T')[0]}.json`;
+                link.click();
+            }
+        }
+    </script>
 </body>
 </html>

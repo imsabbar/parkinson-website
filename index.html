@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -84,10 +83,7 @@
                             <div class="dropdown-user-email" id="dropdownUserEmail">sarah.johnson@example.com</div>
                         </div>
                         <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item" onclick="showDashboard()">
-                                <i>📈</i> Tableau de bord
-                            </a>
-                            <a href="#" class="dropdown-item" onclick="showProfile()">
+                            <a href="profile.html" class="dropdown-item">
                                 <i>👤</i> Profil
                             </a>
                             <div class="dropdown-divider"></div>
@@ -99,8 +95,8 @@
                 </div>
                 
                 <div class="header-actions" id="headerActions">
-                    <a href="#" class="login-btn" onclick="ParkinsonDetect.showLoginModal()">Connexion</a>
-                    <a href="#" class="signup-btn" onclick="ParkinsonDetect.showSignupModal()">Inscription</a>
+                    <a href="login.html" class="login-btn">Connexion</a>
+                    <a href="signup.html" class="signup-btn">Inscription</a>
                 </div>
                 
                 <button class="mobile-menu">☰</button>
@@ -111,15 +107,15 @@
     <!-- Home Section -->
     <section id="home">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero fade-in-on-scroll">
             <div class="container">
-                <h1>Détection Précoce de Parkinson</h1>
-                <p class="hero-subtitle">
+                <h1 class="fade-in-on-scroll">Détection Précoce de Parkinson</h1>
+                <p class="hero-subtitle fade-in-on-scroll">
                     Système révolutionnaire d'apprentissage automatique basé sur les autoencodeurs qui analyse les données d'accéléromètre et de gyroscope 
                     pour détecter les marqueurs de la maladie de Parkinson avec une précision sans précédent.
                 </p>
                 
-                <div class="hero-stats">
+                <div class="hero-stats fade-in-on-scroll">
                     <div class="stat">
                         <div class="stat-number">94.3%</div>
                         <div class="stat-label">Précision de détection</div>
@@ -138,22 +134,22 @@
                     </div>
                 </div>
                 
-                <p style="margin: 20px 0; opacity: 0.9;">
+                <p style="margin: 20px 0; opacity: 0.9;" class="fade-in-on-scroll">
                     <strong>Le saviez-vous?</strong> La détection précoce peut améliorer les résultats du traitement de 
                     <strong>70%</strong> et améliorer considérablement la qualité de vie.
                 </p>
                 
-                <a href="analyze.html" class="cta-button">Commencer l'analyse</a>
-                <a href="#" class="cta-button cta-secondary" onclick="showDashboard()">Voir mes résultats</a>
+                <a href="analyze.html" class="cta-button fade-in-on-scroll">Commencer l'analyse</a>
+                <a href="profile.html" class="cta-button cta-secondary fade-in-on-scroll" id="profileCta">Voir mes résultats</a>
             </div>
         </section>
         
         <!-- Understanding Parkinson's Section -->
-        <section class="section">
+        <section class="section fade-in-on-scroll">
             <div class="container">
-                <h2 class="section-title">Comprendre la Maladie de Parkinson</h2>
+                <h2 class="section-title fade-in-on-scroll">Comprendre la Maladie de Parkinson</h2>
                 <div class="card-grid">
-                    <div class="card">
+                    <div class="card stagger-item">
                         <div class="card-header">
                             <div class="upload-icon">🧠</div>
                             <h3 class="card-title">Qu'est-ce que la maladie de Parkinson?</h3>
@@ -172,7 +168,7 @@
                         </div>
                     </div>
                     
-                    <div class="card">
+                    <div class="card stagger-item">
                         <div class="card-header">
                             <div class="upload-icon">⚙️</div>
                             <h3 class="card-title">Symptômes moteurs</h3>
@@ -187,7 +183,7 @@
                         </ul>
                     </div>
                     
-                    <div class="card">
+                    <div class="card stagger-item">
                         <div class="card-header">
                             <div class="upload-icon">🎯</div>
                             <h3 class="card-title">Détection précoce</h3>
@@ -210,12 +206,12 @@
         </section>
         
         <!-- Research Impact Section -->
-        <section class="section">
+        <section class="section fade-in-on-scroll">
             <div class="container">
-                <h2 class="section-title">Impact de la Recherche</h2>
-                <div class="card">
+                <h2 class="section-title fade-in-on-scroll">Impact de la Recherche</h2>
+                <div class="card fade-in-scale">
                     <div class="card-grid">
-                        <div>
+                        <div class="fade-in-left">
                             <h3 style="color: #667eea; margin-bottom: 15px;">Contributions Scientifiques</h3>
                             <ul style="padding-left: 20px; line-height: 1.8;">
                                 <li>Développement d'algorithmes d'autoencodeurs pour la détection d'anomalies</li>
@@ -225,7 +221,7 @@
                             </ul>
                         </div>
                         
-                        <div>
+                        <div class="fade-in-right">
                             <h3 style="color: #667eea; margin-bottom: 15px;">Applications Cliniques</h3>
                             <ul style="padding-left: 20px; line-height: 1.8;">
                                 <li>Outil de dépistage non-invasif et accessible</li>
@@ -243,11 +239,11 @@
     </section>
 
     <!-- Technology Section -->
-    <section id="technologie" class="section">
+    <section id="technologie" class="section fade-in-on-scroll">
         <div class="container">
-            <h2 class="section-title">Notre Technologie IA</h2>
+            <h2 class="section-title fade-in-on-scroll">Notre Technologie IA</h2>
             <div class="card-grid">
-                <div class="card">
+                <div class="card stagger-item">
                     <div class="card-header">
                         <div class="upload-icon">📱</div>
                         <h3 class="card-title">Capteurs de Mouvement</h3>
@@ -310,10 +306,10 @@
     <!-- Feuille de Route Section -->
     <section id="feuille-de-route" class="section">
         <div class="container">
-            <h2 class="section-title">Feuille de Route & Perspectives</h2>
+            <h2 class="section-title fade-in-on-scroll">Feuille de Route & Perspectives</h2>
             
             <div class="card-grid">
-                <div class="card">
+                <div class="card fade-in-on-scroll stagger-item">
                     <div class="card-header">
                         <div class="upload-icon">📱</div>
                         <h3 class="card-title">Applications Mobiles</h3>
@@ -322,11 +318,11 @@
                     
                     <div style="margin-top: 15px; padding: 10px; background: #e3f2fd; border-radius: 8px;">
                         <strong style="color: #1976d2;">• Phase:</strong> En développement<br>
-                        <strong style="color: #1976d2;">• Lancement:</strong> Q2 2025
+                        <strong style="color: #1976d2;">• Lancement:</strong> Q4 2025
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card fade-in-on-scroll stagger-item">
                     <div class="card-header">
                         <div class="upload-icon">☁️</div>
                         <h3 class="card-title">Plateforme Cloud</h3>
@@ -335,11 +331,11 @@
                     
                     <div style="margin-top: 15px; padding: 10px; background: #fff3e0; border-radius: 8px;">
                         <strong style="color: #f57c00;">• Phase:</strong> Planifié<br>
-                        <strong style="color: #f57c00;">• Lancement:</strong> Q4 2025
+                        <strong style="color: #f57c00;">• Lancement:</strong> Q1 2026
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card fade-in-on-scroll stagger-item">
                     <div class="card-header">
                         <div class="upload-icon">🤖</div>
                         <h3 class="card-title">IA Avancée</h3>
@@ -352,7 +348,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card fade-in-on-scroll stagger-item">
                     <div class="card-header">
                         <div class="upload-icon">🌐</div>
                         <h3 class="card-title">Expansion Internationale</h3>
@@ -371,10 +367,10 @@
     <!-- À Propos Section -->
     <section id="a-propos" class="section">
         <div class="container">
-            <h2 class="section-title">À propos de ParkinsonDetect</h2>
+            <h2 class="section-title fade-in-on-scroll">À propos de ParkinsonDetect</h2>
             
             <div class="card-grid">
-                <div class="card">
+                <div class="card fade-in-on-scroll stagger-item">
                     <h3 class="card-title">Notre Mission</h3>
                     <p>ParkinsonDetect est un projet de recherche académique dédié à l'innovation dans la détection précoce de la maladie de Parkinson. Notre équipe multidisciplinaire combine expertise en sciences des données, génie logiciel et recherche médicale.</p>
                     
@@ -390,7 +386,7 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card fade-in-on-scroll stagger-item">
                     <h3 class="card-title">Impact Recherche</h3>
                     <p>Nos travaux contribuent à l'avancement des connaissances en intelligence artificielle appliquée à la santé, avec un focus sur l'accessibilité et la précision diagnostique.</p>
                     
@@ -402,7 +398,7 @@
                     </ul>
                 </div>
                 
-                <div class="card">
+                <div class="card fade-in-on-scroll stagger-item">
                     <h3 class="card-title">Éthique & Conformité</h3>
                     <p>Nous nous engageons à respecter les plus hauts standards éthiques en recherche médicale et protection des données personnelles.</p>
                     
@@ -416,10 +412,10 @@
             
             <!-- About Parkinson's Disease -->
             <div style="margin-top: 60px;">
-                <h2 class="section-title">À propos de la Maladie de Parkinson</h2>
+                <h2 class="section-title fade-in-on-scroll">À propos de la Maladie de Parkinson</h2>
                 
                 <div class="card-grid">
-                    <div class="card">
+                    <div class="card fade-in-on-scroll stagger-item">
                         <h3 class="card-title">Qu'est-ce que la maladie de Parkinson?</h3>
                         <p>La maladie de Parkinson est un trouble neurodégénératif progressif qui affecte le mouvement. Elle survient lorsque les cellules nerveuses du cerveau qui produisent la dopamine sont endommagées ou meurent.</p>
                         
@@ -432,7 +428,7 @@
                         </ul>
                     </div>
                     
-                    <div class="card">
+                    <div class="card fade-in-on-scroll stagger-item">
                         <h3 class="card-title">Symptômes Principaux</h3>
                         <div style="margin-top: 15px;">
                             <div class="detail-item" style="margin-bottom: 15px;">
@@ -454,7 +450,7 @@
                         </div>
                     </div>
                     
-                    <div class="card">
+                    <div class="card fade-in-on-scroll stagger-item">
                         <h3 class="card-title">Importance de la Détection Précoce</h3>
                         <p>La détection précoce permet d'améliorer significativement les résultats du traitement et la qualité de vie des patients.</p>
                         
@@ -476,7 +472,7 @@
                 </div>
                 
                 <!-- Medical Disclaimer -->
-                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 15px; padding: 25px; margin-top: 40px; border-left: 4px solid #f39c12;">
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 15px; padding: 25px; margin-top: 40px; border-left: 4px solid #f39c12;" class="fade-in-on-scroll">
                     <h4 style="color: #856404; margin-bottom: 15px; display: flex; align-items: center;">
                         <span style="margin-right: 10px; font-size: 1.2rem;">⚠️</span>
                         Avertissement Médical Important
@@ -490,53 +486,70 @@
     </section>
 
 <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="section fade-in-on-scroll">
         <div class="container">
-            <h2 class="section-title">Contactez-nous</h2>
+            <h2 class="section-title fade-in-on-scroll">Contactez-nous</h2>
             
-            <div class="card-grid">
-                <div class="card">
-                    <h3 class="card-title">Informations de Contact</h3>
+            <div class="contact-wrapper">
+                <div class="contact-info-card stagger-item">
+                    <div class="contact-header">
+                        <div class="contact-icon">📞</div>
+                        <h3 class="contact-title">Informations de Contact</h3>
+                    </div>
                     
-                    <div style="margin-bottom: 20px;">
-                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                            <span style="margin-right: 15px; font-size: 1.2rem;">📧</span>
-                            <div>
-                                <strong>Email Recherche</strong><br>
-                                <a href="mailto:research@parkinsondetect.com" style="color: #667eea;">research@parkinsondetect.com</a>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">📧</div>
+                            <div class="contact-item-content">
+                                <strong>Email Recherche</strong>
+                                <a href="mailto:research@parkinsondetect.com">research@parkinsondetect.com</a>
                             </div>
                         </div>
                         
-                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                            <span style="margin-right: 15px; font-size: 1.2rem;">🏫</span>
-                            <div>
-                                <strong>Institution</strong><br>
-                                Sciences de Données • Génie Logiciel et Réseaux
+                        <div class="contact-item">
+                            <div class="contact-item-icon">🏫</div>
+                            <div class="contact-item-content">
+                                <strong>Institution</strong>
+                                <span>Sciences de Données • Génie Logiciel et Réseaux</span>
                             </div>
                         </div>
                         
-                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                            <span style="margin-right: 15px; font-size: 1.2rem;">💼</span>
-                            <div>
-                                <strong>Collaborations</strong><br>
-                                Ouvert aux partenariats académiques et cliniques
+                        <div class="contact-item">
+                            <div class="contact-item-icon">💼</div>
+                            <div class="contact-item-content">
+                                <strong>Collaborations</strong>
+                                <span>Ouvert aux partenariats académiques et cliniques</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-item-icon">⏰</div>
+                            <div class="contact-item-content">
+                                <strong>Réponse</strong>
+                                <span>Sous 48h en jours ouvrables</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="card">
-                    <h3 class="card-title">Formulaire de Contact</h3>
+                <div class="contact-form-card stagger-item">
+                    <div class="contact-header">
+                        <div class="contact-icon">✉️</div>
+                        <h3 class="contact-title">Envoyez-nous un message</h3>
+                        <p class="contact-subtitle">Nous vous répondrons rapidement</p>
+                    </div>
                     
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label class="form-label" for="contactName">Nom complet</label>
-                            <input type="text" id="contactName" name="name" class="form-input" placeholder="Votre nom complet" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="contactEmail">Email</label>
-                            <input type="email" id="contactEmail" name="email" class="form-input" placeholder="votre.email@exemple.com" required>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="contactName">Nom complet</label>
+                                <input type="text" id="contactName" name="name" class="form-input" placeholder="Votre nom complet" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="contactEmail">Email</label>
+                                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="votre.email@exemple.com" required>
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -546,17 +559,19 @@
                                 <option value="collaboration">Collaboration de recherche</option>
                                 <option value="technique">Question technique</option>
                                 <option value="data">Partage de données</option>
+                                <option value="demo">Demande de démonstration</option>
                                 <option value="autre">Autre</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label" for="contactMessage">Message</label>
-                            <textarea id="contactMessage" name="message" class="form-input" rows="5" placeholder="Votre message..." required></textarea>
+                            <textarea id="contactMessage" name="message" class="form-input" rows="4" placeholder="Décrivez votre demande..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            Envoyer le Message
+                        <button type="submit" class="btn btn-primary contact-submit">
+                            <span class="btn-icon">✉️</span>
+                            <span>Envoyer le Message</span>
                         </button>
                     </form>
                 </div>
@@ -565,183 +580,8 @@
     </section>
 
 
-                
-                <div class="card-grid">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="upload-icon">📊</div>
-                            <h3 class="card-title">Data Collection</h3>
-                        </div>
-                        <p>Motion data is collected from accelerometer and gyroscope sensors in smartphones or wearable devices. The system captures precise movement patterns during daily activities.</p>
-                        
-                        <div class="result-details" style="margin-top: 20px;">
-                            <div class="detail-item">
-                                <div class="detail-value">20Hz</div>
-                                <div>Sampling Rate</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-value">6</div>
-                                <div>Sensor Axes</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="upload-icon">🔧</div>
-                            <h3 class="card-title">Preprocessing</h3>
-                        </div>
-                        <p>Raw sensor data undergoes normalization and windowing. Data is segmented into 100-sample windows with 50% overlap to ensure comprehensive pattern analysis.</p>
-                        
-                        <div class="result-details" style="margin-top: 20px;">
-                            <div class="detail-item">
-                                <div class="detail-value">100</div>
-                                <div>Window Size</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-value">50%</div>
-                                <div>Overlap</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="upload-icon">🧠</div>
-                            <h3 class="card-title">Autoencoder Analysis</h3>
-                        </div>
-                        <p>Our deep learning autoencoder model reconstructs normal movement patterns. Higher reconstruction errors indicate potential abnormalities associated with Parkinson's disease.</p>
-                        
-                        <div class="result-details" style="margin-top: 20px;">
-                            <div class="detail-item">
-                                <div class="detail-value">1.376</div>
-                                <div>Threshold</div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-value">94.3%</div>
-                                <div>Accuracy</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- PADS Dataset Information -->
-                <div class="card" style="margin-top: 40px;">
-                    <h3 class="card-title">PADS Dataset Validation</h3>
-                    <p>Our model is trained and validated using the Parkinson's Disease Smartwatch Dataset (PADS), ensuring clinical relevance and accuracy.</p>
-                    
-                    <div class="card-grid" style="margin-top: 30px;">
-                        <div class="detail-item">
-                            <div class="detail-value">1200+</div>
-                            <div>Patient Records</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">Mixed</div>
-                            <div>Demographics</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">Clinical</div>
-                            <div>Validation</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">Peer</div>
-                            <div>Reviewed</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Understanding Results -->
-                <div class="card" style="margin-top: 40px;">
-                    <h3 class="card-title">Understanding Your Results</h3>
-                    <div class="card-grid">
-                        <div class="card">
-                            <h4 style="color: #27ae60;">Healthy Pattern (Score < 1.376)</h4>
-                            <p>Low reconstruction error indicates normal movement patterns consistent with healthy motor function.</p>
-                        </div>
-                        <div class="card">
-                            <h4 style="color: #e74c3c;">Abnormal Pattern (Score > 1.376)</h4>
-                            <p>High reconstruction error suggests movement anomalies that may indicate early Parkinson's symptoms.</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8d7da; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #e74c3c;">
-                        <h4 style="color: #721c24;">Important Note</h4>
-                        <p style="color: #721c24; margin: 0;">This analysis is for research purposes only. Abnormal results should be discussed with a qualified healthcare professional for proper evaluation and diagnosis.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="analysis-section">
-            <div class="container">
-                <h2 class="section-title">Motion Sensor Analysis</h2>
-                <p style="text-align: center; font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto 40px;">
-                    Upload your sensor data ZIP file containing accelerometer.csv and gyroscope.csv files for analysis.
-                </p>
-                
-                <div class="upload-area" onclick="document.getElementById('fileInput').click()">
-                    <div class="upload-icon">📁</div>
-                    <div class="upload-text">Click to upload sensor data</div>
-                    <div class="upload-subtext">ZIP file containing accelerometer.csv and gyroscope.csv (Max 50MB)</div>
-                    <input type="file" id="fileInput" class="file-input" accept=".zip" aria-label="Sélectionner un fichier ZIP contenant les données de capteur">
-                </div>
-                
-                <div style="text-align: center;">
-                    <button class="btn btn-primary" id="analyzeBtn" disabled>
-                        Analyze Motion Data
-                    </button>
-                </div>
-                
-                <div class="loading" id="loadingSpinner">
-                    <div class="spinner"></div>
-                    <p>Analyzing your motion data...</p>
-                    <p style="font-size: 0.9rem; color: #666;">Processing accelerometer and gyroscope patterns</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="results-section">
-            <div class="container">
-                <div class="result-card" id="resultCard">
-                    <div class="result-header">
-                        <h3>Analysis Results</h3>
-                    </div>
-                    
-                    <div style="text-align: center;">
-                        <div class="result-score" id="resultLabel">Healthy</div>
-                        <p style="margin-bottom: 20px;">Reconstruction Score: <strong id="scoreValue">0.094</strong></p>
-                        <p style="color: #666; margin-bottom: 30px;">
-                            Based on autoencoder analysis of your motion patterns
-                        </p>
-                    </div>
-                    
-                    <div class="result-details">
-                        <div class="detail-item">
-                            <div class="detail-value" id="windowsCount">3</div>
-                            <div>Analysis Windows</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value" id="thresholdValue">1.376</div>
-                            <div>Detection Threshold</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">20Hz</div>
-                            <div>Sampling Rate</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">100</div>
-                            <div>Window Size</div>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; margin-top: 30px;">
-                        <button class="btn btn-success" onclick="ParkinsonDetect.saveResults()">Save to Profile</button>
-                        <button class="btn btn-secondary" onclick="ParkinsonDetect.downloadReport()">Download Report</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+
 
 <!-- Authentication Modals -->
     <div id="loginModal" class="modal">
@@ -769,7 +609,7 @@
                 
                 <p style="text-align: center; color: #666;">
                     Pas de compte? 
-                    <a href="#" onclick="ParkinsonDetect.closeModal('loginModal'); ParkinsonDetect.showSignupModal();" style="color: #667eea;">Créer un compte</a>
+                    <a href="signup.html" style="color: #667eea;">Créer un compte</a>
                 </p>
             </form>
         </div>
@@ -797,6 +637,12 @@
                 </div>
                 
                 <div class="form-group">
+                    <label class="form-label" for="signupMedicalId">ID Médical (optionnel)</label>
+                    <input type="text" id="signupMedicalId" name="medicalId" class="form-input" placeholder="Ex: MED-12345" pattern="[A-Z0-9\-]{5,20}">
+                    <small style="color: #666; font-size: 0.8rem;">Format: 5-20 caractères (lettres majuscules, chiffres, tirets)</small>
+                </div>
+                
+                <div class="form-group">
                     <label class="form-label" for="signupPassword">Mot de passe</label>
                     <input type="password" id="signupPassword" name="password" class="form-input" placeholder="Minimum 8 caractères" required minlength="8">
                 </div>
@@ -815,7 +661,7 @@
                 
                 <p style="text-align: center; color: #666;">
                     Déjà un compte? 
-                    <a href="#" onclick="ParkinsonDetect.closeModal('signupModal'); ParkinsonDetect.showLoginModal();" style="color: #667eea;">Se connecter</a>
+                    <a href="login.html" style="color: #667eea;">Se connecter</a>
                 </p>
             </form>
         </div>
@@ -885,7 +731,23 @@
     </footer>
 
     <!-- JavaScript Files -->
+    <script src="assets/js/dataManager.js"></script>
     <script src="assets/js/charts.js"></script>
     <script src="assets/js/main.js"></script>
+    
+    <!-- Fallback preloader hide script -->
+    <script>
+        // Failsafe to hide preloader if main scripts fail
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader && preloader.style.display !== 'none') {
+                console.log('Fallback: Hiding preloader');
+                preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        }, 3000); // 3 second fallback
+    </script>
 </body>
 </html>

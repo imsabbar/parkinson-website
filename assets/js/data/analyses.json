@@ -1,0 +1,16 @@
+{
+  "analyses": [],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-01-01T00:00:00.000Z",
+    "totalAnalyses": 0,
+    "dataSchema": "v1"
+  },
+  "statistics": {
+    "totalHealthy": 0,
+    "totalAtRisk": 0,
+    "averageScore": 0,
+    "mostCommonFileTypes": [],
+    "dailyAnalyses": []
+  }
+}

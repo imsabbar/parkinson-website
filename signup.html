@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - ParkinsonDetect</title>
+    
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="Créez votre compte ParkinsonDetect pour commencer l'analyse de mouvement.">
+    <meta name="keywords" content="signup, inscription, ParkinsonDetect, analyse mouvement">
+    <meta name="author" content="ParkinsonDetect Research Team">
+</head>
+<body class="auth-page">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-contact">
+                    <span>📧 research@parkinsondetect.com</span>
+                </div>
+                <div class="header-social">
+                    <span style="opacity: 0.9; font-style: italic;">Sciences de Données • Génie Logiciel et Réseaux</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🧠</div>
+                    <div>
+                        <div>ParkinsonDetect</div>
+                        <div style="font-size: 0.6rem; opacity: 0.8; font-weight: normal;">Détection précoce de la maladie de Parkinson</div>
+                    </div>
+                </a>
+                
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="index.html#technologie" class="nav-link">Technologie</a>
+                    <a href="index.html#feuille-de-route" class="nav-link">Feuille de route</a>
+                    <a href="index.html#a-propos" class="nav-link">À propos</a>
+                    <a href="analyze.html" class="nav-link">Analyse</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- User Avatar Dropdown (shown when logged in) -->
+                <div class="user-avatar-container" id="userAvatarContainer">
+                    <div class="user-avatar" id="userAvatar">
+                        <span id="avatarInitials">U</span>
+                    </div>
+                    <div class="avatar-dropdown" id="avatarDropdown">
+                        <div class="dropdown-header">
+                            <div class="dropdown-user-name" id="dropdownUserName">Utilisateur</div>
+                            <div class="dropdown-user-email" id="dropdownUserEmail">user@example.com</div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="profile.html" class="dropdown-item">
+                                <i>👤</i> Profil
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item dropdown-logout" onclick="ParkinsonDetect.logout()">
+                                <i>🚪</i> Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-actions" id="headerActions">
+                    <a href="login.html" class="login-btn">Connexion</a>
+                    <a href="signup.html" class="signup-btn">Inscription</a>
+                </div>
+                
+                <button class="mobile-menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="auth-main">
+        <div class="container">
+            <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header-content">
+                    <h1>Créer votre compte</h1>
+                    <p>Rejoignez des milliers d'utilisateurs qui font confiance à notre technologie</p>
+                </div>
+                
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label" for="signupName">
+                            <span class="label-icon">👤</span>
+                            Nom complet
+                        </label>
+                        <input 
+                            type="text" 
+                            id="signupName" 
+                            name="name" 
+                            class="form-input" 
+                            placeholder="Entrez votre nom complet" 
+                            required
+                            autocomplete="name"
+                            minlength="2"
+                            maxlength="50"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="signupEmail">
+                            <span class="label-icon">📧</span>
+                            Adresse e-mail
+                        </label>
+                        <input 
+                            type="email" 
+                            id="signupEmail" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="votre.email@exemple.com" 
+                            required
+                            autocomplete="email"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="signupDob">
+                            <span class="label-icon">📅</span>
+                            Date de naissance
+                        </label>
+                        <input 
+                            type="date" 
+                            id="signupDob" 
+                            name="dateOfBirth" 
+                            class="form-input" 
+                            required
+                            autocomplete="bday"
+                        >
+                        <small class="form-hint">Vous devez être âgé d'au moins 18 ans</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="signupPassword">
+                            <span class="label-icon">🔒</span>
+                            Mot de passe
+                        </label>
+                        <div class="password-input-container">
+                            <input 
+                                type="password" 
+                                id="signupPassword" 
+                                name="password" 
+                                class="form-input" 
+                                placeholder="Minimum 8 caractères" 
+                                required
+                                minlength="8"
+                                maxlength="128"
+                                autocomplete="new-password"
+                            >
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                                👁️
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strengthFill"></div>
+                            </div>
+                            <small class="strength-text" id="strengthText">
+                                Doit contenir: majuscule, minuscule, chiffre
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="signupConfirmPassword">
+                            <span class="label-icon">🔒</span>
+                            Confirmer le mot de passe
+                        </label>
+                        <div class="password-input-container">
+                            <input 
+                                type="password" 
+                                id="signupConfirmPassword" 
+                                name="confirmPassword" 
+                                class="form-input" 
+                                placeholder="Confirmez votre mot de passe" 
+                                required
+                                autocomplete="new-password"
+                            >
+                            <button type="button" class="password-toggle" onclick="togglePassword('signupConfirmPassword')">
+                                👁️
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-group terms-checkbox">
+                        <input type="checkbox" name="terms" id="terms" class="custom-checkbox" required>
+                        <label for="terms" class="checkbox-label">
+                            J'accepte les <a href="#" class="terms-link">Conditions d'utilisation</a> 
+                            et la <a href="#" class="terms-link">Politique de confidentialité</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span class="btn-icon">✨</span>
+                        Créer mon compte
+                    </button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Vous avez déjà un compte? 
+                        <a href="login.html" class="auth-link">Se connecter</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Benefits Section -->
+            <div class="auth-features">
+                <h3>Rejoignez la révolution de la détection précoce</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">🏥</span>
+                        <div>
+                            <h4>Validation clinique</h4>
+                            <p>Testé sur plus de 1200 patients avec résultats publiés</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <div>
+                            <h4>Analyses détaillées</h4>
+                            <p>Graphiques interactifs et historique complet</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌍</span>
+                        <div>
+                            <h4>Accessible partout</h4>
+                            <p>Analyse en ligne, résultats instantanés</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ParkinsonDetect</h3>
+                    <p style="color: #bdc3c7; line-height: 1.6; margin-bottom: 20px;">
+                        Plateforme d'intelligence artificielle pour la détection précoce de la maladie de Parkinson utilisant l'analyse des données de capteurs de mouvement.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" title="GitHub">💻</a>
+                        <a href="#" title="Research Papers">📄</a>
+                        <a href="#" title="LinkedIn">💼</a>
+                        <a href="#" title="Contact">📧</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recherche</h3>
+                    <a href="#">Méthodologie</a>
+                    <a href="#">Dataset PADS</a>
+                    <a href="#">Publications</a>
+                    <a href="#">Validation Clinique</a>
+                    <a href="#">Résultats</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Plateforme</h3>
+                    <a href="analyze.html">Analyse de Mouvement</a>
+                    <a href="#">API Documentation</a>
+                    <a href="#">Guide d'utilisation</a>
+                    <a href="#">Télécharger App</a>
+                    <a href="#">Intégrations</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Centre d'aide</a>
+                    <a href="index.html#contact">Contact Équipe</a>
+                    <a href="#">Support Technique</a>
+                    <a href="#">Formation</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <div>
+                        <p>&copy; 2024 ParkinsonDetect. Projet de recherche en IA médicale.</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">
+                            Sciences de Données • Génie Logiciel et Réseaux • Université
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 0.9rem;">
+                        <span>🏆 94.3% Précision</span>
+                        <span>🔒 Sécurisé</span>
+                        <span>⚙️ Open Source</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files - Load data manager first, then main.js, then auth.js -->
+    <script src="assets/js/dataManager.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+</html>

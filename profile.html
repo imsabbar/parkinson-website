@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - ParkinsonDetect</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    
+    <!-- SEO and Meta Tags -->
+    <meta name="description" content="Gérez votre profil ParkinsonDetect et consultez vos analyses.">
+    <meta name="keywords" content="profile, profil, ParkinsonDetect, analyses">
+    <meta name="author" content="ParkinsonDetect Research Team">
+</head>
+<body>
+    <!-- Professional Loading Spinner -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="logo-loader">
+                <div class="logo-icon">🧠</div>
+                <div class="logo-text">ParkinsonDetect</div>
+            </div>
+            <div class="spinner-container">
+                <div class="spinner-modern"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="loading-text">Chargement du profil...</div>
+            <div class="loading-subtext">IA médicale • Détection précoce</div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-contact">
+                    <span>📧 research@parkinsondetect.com</span>
+                </div>
+                <div class="header-social">
+                    <span style="opacity: 0.9; font-style: italic;">Sciences de Données • Génie Logiciel et Réseaux</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">🧠</div>
+                    <div>
+                        <div>ParkinsonDetect</div>
+                        <div style="font-size: 0.6rem; opacity: 0.8; font-weight: normal;">Détection précoce de la maladie de Parkinson</div>
+                    </div>
+                </a>
+                
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="index.html#technologie" class="nav-link">Technologie</a>
+                    <a href="index.html#feuille-de-route" class="nav-link">Feuille de route</a>
+                    <a href="index.html#a-propos" class="nav-link">À propos</a>
+                    <a href="analyze.html" class="nav-link">Analyse</a>
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </nav>
+                
+                <!-- User Avatar Dropdown (shown when logged in) -->
+                <div class="user-avatar-container" id="userAvatarContainer">
+                    <div class="user-avatar" id="userAvatar">
+                        <span id="avatarInitials">U</span>
+                    </div>
+                    <div class="avatar-dropdown" id="avatarDropdown">
+                        <div class="dropdown-header">
+                            <div class="dropdown-user-name" id="dropdownUserName">Utilisateur</div>
+                            <div class="dropdown-user-email" id="dropdownUserEmail">user@example.com</div>
+                        </div>
+                        <div class="dropdown-menu">
+                            <a href="profile.html" class="dropdown-item">
+                                <i>👤</i> Profil
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <button class="dropdown-item dropdown-logout" onclick="ParkinsonDetect.logout()">
+                                <i>🚺</i> Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-actions" id="headerActions">
+                    <a href="login.html" class="login-btn">Connexion</a>
+                    <a href="signup.html" class="signup-btn">Inscription</a>
+                </div>
+                
+                <button class="mobile-menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="profile-main fade-in-on-scroll">
+        <div class="container">
+            <!-- Profile Header -->
+            <div class="profile-hero fade-in-on-scroll">
+                <div class="profile-avatar-large">
+                    <span id="profileAvatarInitials">U</span>
+                    <button class="avatar-edit-btn" onclick="editAvatar()">
+                        <span>📷</span>
+                    </button>
+                </div>
+                <div class="profile-info">
+                    <h1 id="profileName">Chargement...</h1>
+                    <p id="profileEmail">user@example.com</p>
+                    <div class="profile-meta">
+                        <span class="meta-item">
+                            <span class="meta-icon">📅</span>
+                            Membre depuis <span id="memberSince">-</span>
+                        </span>
+                        <span class="meta-item">
+                            <span class="meta-icon">🎂</span>
+                            <span id="userAge">-</span> ans
+                        </span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <a href="analyze.html" class="btn btn-primary">
+                        <span>🚀</span> Nouvelle analyse
+                    </a>
+                    <button class="btn btn-secondary" onclick="editProfile()">
+                        <span>✏️</span> Modifier le profil
+                    </button>
+                    <button class="btn btn-secondary" onclick="refreshProfile()">
+                        <span>🔄</span> Actualiser
+                    </button>
+                </div>
+            </div>
+
+            <!-- Statistics Overview -->
+            <div class="stats-section fade-in-on-scroll">
+                <h2 class="section-title fade-in-on-scroll">Statistiques d'analyse</h2>
+                <div class="stats-grid">
+                    <div class="stat-card primary stagger-item">
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon">📊</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="totalAnalyses">0</h3>
+                            <p>Analyses effectuées</p>
+                            <div class="stat-trend positive">
+                                <span class="trend-icon">📈</span>
+                                <span class="trend-text" id="monthlyTrend">+0 ce mois</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card success stagger-item">
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon">🎯</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="averageScore">0.000</h3>
+                            <p>Score MSE moyen</p>
+                            <div class="stat-trend neutral">
+                                <span class="trend-icon">➡️</span>
+                                <span class="trend-text" id="scoreTrend">Stable</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card warning stagger-item">
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon">💚</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="healthyCount">0</h3>
+                            <p>Résultats sains</p>
+                            <div class="stat-percentage">
+                                <span id="healthyPercentage">0%</span> du total
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card danger stagger-item">
+                        <div class="stat-icon-wrapper">
+                            <div class="stat-icon">⚠️</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="riskCount">0</h3>
+                            <p>Résultats à risque</p>
+                            <div class="stat-percentage">
+                                <span id="riskPercentage">0%</span> du total
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section fade-in-on-scroll">
+                <div class="chart-grid">
+                    <!-- Trend Chart -->
+                    <div class="chart-container large stagger-item">
+                        <div class="chart-header">
+                            <h3>Évolution des scores MSE</h3>
+                            <div class="chart-controls">
+                                <button class="btn btn-sm" onclick="updateChartPeriod('7d')">7 jours</button>
+                                <button class="btn btn-sm active" onclick="updateChartPeriod('30d')">30 jours</button>
+                                <button class="btn btn-sm" onclick="updateChartPeriod('all')">Tout</button>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                        <div class="chart-insights">
+                            <div class="insight-item">
+                                <span class="insight-label">Dernière analyse:</span>
+                                <span class="insight-value" id="lastAnalysisDate">-</span>
+                            </div>
+                            <div class="insight-item">
+                                <span class="insight-label">Score le plus bas:</span>
+                                <span class="insight-value" id="lowestScore">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Distribution Chart -->
+                    <div class="chart-container stagger-item">
+                        <div class="chart-header">
+                            <h3>Distribution des résultats</h3>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="distributionChart"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item healthy">
+                                <span class="legend-color"></span>
+                                <span>Résultats sains</span>
+                            </div>
+                            <div class="legend-item risk">
+                                <span class="legend-color"></span>
+                                <span>Résultats à risque</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Activity Chart -->
+                    <div class="chart-container stagger-item">
+                        <div class="chart-header">
+                            <h3>Activité mensuelle</h3>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="monthlyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-section fade-in-on-scroll">
+                <div class="section-header fade-in-on-scroll">
+                    <h2 class="section-title">Activité récente</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-export" onclick="exportAnalysisHistory()">
+                            <span>📤</span> Exporter CSV
+                        </button>
+                        <button class="btn btn-delete" onclick="clearAnalysisHistory()">
+                            <span>🗑️</span> Effacer tout
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="activity-table-container stagger-item">
+                    <table class="activity-table" id="analysisTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Fichier</th>
+                                <th>Score MSE</th>
+                                <th>Résultat</th>
+                                <th>Fenêtres</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Table content will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <div class="empty-icon">📊</div>
+                        <h3>Aucune analyse effectuée</h3>
+                        <p>Commencez votre première analyse pour voir vos résultats ici.</p>
+                        <a href="analyze.html" class="btn btn-primary">
+                            <span>🚀</span> Commencer une analyse
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="danger-section fade-in-on-scroll">
+                <h2 class="section-title danger fade-in-on-scroll">Zone de danger</h2>
+                <div class="danger-card stagger-item">
+                    <div class="danger-content">
+                        <h3>Supprimer le compte</h3>
+                        <p>Une fois supprimé, votre compte et toutes vos données seront définitivement perdues. Cette action est irréversible.</p>
+                    </div>
+                    <button class="btn btn-danger" onclick="deleteAccount()">
+                        <span>🗑️</span> Supprimer le compte
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ParkinsonDetect</h3>
+                    <p style="color: #bdc3c7; line-height: 1.6; margin-bottom: 20px;">
+                        Plateforme d'intelligence artificielle pour la détection précoce de la maladie de Parkinson utilisant l'analyse des données de capteurs de mouvement.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" title="GitHub">💻</a>
+                        <a href="#" title="Research Papers">📄</a>
+                        <a href="#" title="LinkedIn">💼</a>
+                        <a href="#" title="Contact">📧</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recherche</h3>
+                    <a href="#">Méthodologie</a>
+                    <a href="#">Dataset PADS</a>
+                    <a href="#">Publications</a>
+                    <a href="#">Validation Clinique</a>
+                    <a href="#">Résultats</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Plateforme</h3>
+                    <a href="analyze.html">Analyse de Mouvement</a>
+                    <a href="#">API Documentation</a>
+                    <a href="#">Guide d'utilisation</a>
+                    <a href="#">Télécharger App</a>
+                    <a href="#">Intégrations</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <a href="#">Centre d'aide</a>
+                    <a href="index.html#contact">Contact Équipe</a>
+                    <a href="#">Support Technique</a>
+                    <a href="#">Formation</a>
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                    <div>
+                        <p>&copy; 2024 ParkinsonDetect. Projet de recherche en IA médicale.</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">
+                            Sciences de Données • Génie Logiciel et Réseaux • Université
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 0.9rem;">
+                        <span>🏆 94.3% Précision</span>
+                        <span>🔒 Sécurisé</span>
+                        <span>⚙️ Open Source</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/dataManager.js"></script>
+    <script src="assets/js/charts.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/profile.js"></script>
+    
+    <style>
+        /* Enhanced Dashboard Features Styles */
+        .stat-icon-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stat-trend, .stat-percentage {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .stat-trend.positive {
+            color: #27ae60;
+        }
+        
+        .stat-trend.neutral {
+            color: #667eea;
+        }
+        
+        .trend-icon {
+            font-size: 0.9rem;
+        }
+        
+        /* Chart container enhancements */
+        .chart-container.large {
+            grid-column: span 2;
+        }
+        
+        .chart-insights {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .insight-item {
+            text-align: center;
+        }
+        
+        .insight-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .insight-value {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            padding: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #495057;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .legend-item.healthy .legend-color {
+            background-color: #27ae60;
+        }
+        
+        .legend-item.risk .legend-color {
+            background-color: #e74c3c;
+        }
+        
+        /* Insights Section */
+        .insights-section {
+            margin: 40px 0;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .insight-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .insight-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .insight-content h4 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .insight-content p {
+            color: #6c757d;
+            line-height: 1.5;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Action button in table */
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #667eea;
+            color: #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-1px);
+        }
+        
+        /* Enhanced profile actions */
+        .profile-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .chart-container.large {
+                grid-column: span 1;
+            }
+            
+            .chart-insights {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .profile-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        .section-title {
+            text-align: left !important;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            border: none !important;
+            padding-left: 0;
+            text-decoration: none !important;
+            letter-spacing: 0.4px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            display: none !important;
+        }
+        
+        .section-title::before {
+            display: none !important;
+        }
+        
+        .section-title.danger {
+            color: #e74c3c;
+            border-left-color: #e74c3c;
+        }
+        
+        /* Clean Table Styles - Smaller and more compact */
+        .activity-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+        }
+        
+        .activity-table thead {
+            background: #667eea;
+        }
+        
+        .activity-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: white;
+            border: none;
+            font-size: 0.8rem;
+            background: #667eea !important;
+        }
+        
+        .activity-table tbody tr {
+            transition: background-color 0.2s ease;
+            border-bottom: 1px solid #f1f3f4;
+        }
+        
+        .activity-table tbody tr:hover {
+            background-color: #f8f9ff;
+        }
+        
+        .activity-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-table td {
+            padding: 12px 16px;
+            color: #495057;
+            font-size: 0.8rem;
+            vertical-align: middle;
+        }
+        
+        /* Clean status badges - smaller and more compact */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .status-badge.healthy {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-badge.risk {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Smaller file name styling */
+        .file-name {
+            font-family: 'Segoe UI', monospace;
+            font-size: 0.75rem;
+            color: #495057;
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        /* Smaller score value styling */
+        .score-value {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #667eea;
+            background: #f0f2ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        /* Better Green Export Button */
+        .btn-export {
+            background: #20c997 !important;
+            color: white !important;
+            border: 2px solid #20c997 !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-export:hover {
+            background: #1ba085 !important;
+            border-color: #1ba085 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3);
+        }
+        
+        /* Red Delete Button */
+        .btn-delete {
+            background: #dc3545 !important;
+            color: white !important;
+            border: 2px solid #dc3545 !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-delete:hover {
+            background: #c82333 !important;
+            border-color: #c82333 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+        
+        /* Enhanced Section headers alignment */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 0 5px;
+        }
+        
+        .section-header .section-title {
+            margin-bottom: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            letter-spacing: 0.4px;
+        }
+        
+        .section-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        /* Enhanced Chart headers */
+        .chart-header h3 {
+            text-align: left;
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none !important;
+            letter-spacing: 0.3px;
+            padding: 6px 0;
+        }
+        
+        .chart-header h3::after {
+            display: none !important;
+        }
+        
+        /* Info section titles - Enhanced styling */
+        .info-card h3 {
+            text-align: left;
+            margin: 0 0 20px 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #667eea;
+            border-bottom: none !important;
+            padding-bottom: 0;
+            text-decoration: none !important;
+            letter-spacing: 0.4px;
+            position: relative;
+        }
+        
+        .info-card h3::after {
+            display: none !important;
+        }
+        
+        /* Enhanced info items styling - Smaller size */
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 18px;
+            margin-bottom: 8px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .info-item:hover {
+            background: #e8f2ff;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+        
+        .info-item label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9rem;
+            margin: 0;
+            letter-spacing: 0.3px;
+        }
+        
+        .info-item span {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 6px 12px;
+            background: white;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            min-width: 100px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        
+        .info-item span:hover {
+            border-color: #667eea;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+        }
+        
+        /* Enhanced Profile Hero Section */
+        .profile-hero h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 0 0 8px 0;
+            letter-spacing: 0.4px;
+        }
+        
+        .profile-hero p {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+        
+        /* Stats section title */
+        .stats-section h2 {
+            text-decoration: none !important;
+        }
+        
+        .stats-section h2::after {
+            display: none !important;
+        }
+        
+        /* Charts section title */
+        .charts-section h2 {
+            text-decoration: none !important;
+        }
+        
+        .charts-section h2::after {
+            display: none !important;
+        }
+        
+        /* Activity section title */
+        .activity-section h2 {
+            text-decoration: none !important;
+        }
+        
+        .activity-section h2::after {
+            display: none !important;
+        }
+        
+        /* Enhanced Danger section */
+        .danger-card h3 {
+            text-align: left;
+            margin: 0 0 12px 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #e74c3c;
+            letter-spacing: 0.3px;
+            padding: 4px 0;
+        }
+        
+        /* ============================
+           ENHANCED RESPONSIVENESS
+           ============================ */
+        
+        /* Extra Small Mobile (320px - 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+                padding-left: 8px;
+                border-left-width: 3px;
+            }
+            
+            .profile-hero {
+                padding: 20px 15px;
+                gap: 15px;
+            }
+            
+            .profile-avatar-large {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .profile-hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .stat-card {
+                padding: 16px 12px;
+                text-align: center;
+            }
+            
+            .stat-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .activity-table {
+                min-width: 550px;
+                font-size: 0.7rem;
+            }
+            
+            .activity-table th,
+            .activity-table td {
+                padding: 8px 10px;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+            }
+            
+            .chart-controls .btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* Small Mobile (481px - 576px) */
+        @media (min-width: 481px) and (max-width: 576px) {
+            .section-title {
+                font-size: 1.4rem;
+            }
+            
+            .profile-avatar-large {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+            }
+            
+            .activity-table {
+                min-width: 580px;
+            }
+        }
+        
+        /* Mobile Portrait (577px - 768px) */
+        @media (min-width: 577px) and (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .section-actions {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .activity-table {
+                min-width: 600px;
+            }
+        }
+        
+        /* Mobile First - Base styles for mobile */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            /* Profile Header */
+            .profile-hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 30px 20px;
+            }
+            
+            .profile-avatar-large {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+                margin: 0 auto;
+            }
+            
+            .profile-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .profile-actions .btn {
+                width: 100%;
+                justify-content: center;
+                min-height: 44px;
+            }
+            
+            .profile-meta {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            /* Stats Grid */
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 18px 14px;
+            }
+            
+            /* Charts */
+            .chart-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .chart-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .chart-controls {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .chart-wrapper {
+                height: 250px;
+            }
+            
+            /* Section Headers */
+            .section-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .section-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .section-actions .btn {
+                width: 100%;
+                justify-content: center;
+                min-height: 44px;
+            }
+            
+            /* Table Responsive */
+            .activity-table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -15px;
+                padding: 0 15px;
+            }
+            
+            .activity-table {
+                min-width: 600px;
+                font-size: 0.8rem;
+            }
+            
+            .activity-table th,
+            .activity-table td {
+                padding: 10px 15px;
+                white-space: nowrap;
+            }
+            
+            /* Info Grid */
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .info-card {
+                padding: 15px 12px;
+            }
+            
+            /* Enhanced Preferences in mobile - smaller */
+            .preferences-list {
+                gap: 15px;
+            }
+            
+            .preference-item {
+                padding: 10px 15px;
+                background: #f8f9ff;
+                border-radius: 8px;
+                border: 1px solid #e9ecef;
+                transition: all 0.3s ease;
+            }
+            
+            .preference-item:hover {
+                background: #e8f2ff;
+                border-color: #667eea;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+            }
+            
+            .preference-item label {
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: #495057;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                cursor: pointer;
+                margin: 0;
+            }
+            
+            /* Danger Section */
+            .danger-card {
+                padding: 20px 15px;
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .danger-card .btn {
+                width: 100%;
+            }
+        }
+        
+        /* Tablet Portrait (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .profile-hero {
+                flex-direction: row;
+                text-align: left;
+                gap: 25px;
+                padding: 40px 30px;
+            }
+            
+            .section-actions {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            .activity-table {
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Tablet Landscape / Small Desktop (1025px - 1199px) */
+        @media (min-width: 1025px) and (max-width: 1199px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+        
+        /* Desktop (1200px - 1399px) */
+        @media (min-width: 1200px) and (max-width: 1399px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 25px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .container {
+                max-width: 1140px;
+            }
+        }
+        
+        /* Large Desktop (1400px+) */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1320px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 35px;
+            }
+        }
+        
+        /* Interactive Animations - Following Memory Standards */
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .stat-card:hover,
+        .info-card:hover,
+        .chart-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* Enhanced Touch Targets for Mobile */
+        @media (max-width: 768px) {
+            .btn {
+                min-height: 44px;
+                padding: 12px 20px;
+                font-size: 1rem;
+                touch-action: manipulation;
+            }
+            
+            .chart-controls .btn {
+                min-height: 40px;
+                padding: 10px 16px;
+                min-width: 60px;
+            }
+            
+            .preference-checkbox {
+                min-width: 44px;
+                min-height: 44px;
+            }
+            
+            .avatar-edit-btn {
+                width: 44px;
+                height: 44px;
+            }
+        }
+        
+        /* Improve table scrolling on mobile */
+        @media (max-width: 768px) {
+            .activity-table-container::-webkit-scrollbar {
+                height: 6px;
+            }
+            
+            .activity-table-container::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 3px;
+            }
+            
+            .activity-table-container::-webkit-scrollbar-thumb {
+                background: #c1c1c1;
+                border-radius: 3px;
+            }
+            
+            .activity-table-container::-webkit-scrollbar-thumb:hover {
+                background: #a8a8a8;
+            }
+            
+            /* Touch-friendly buttons on mobile */
+            .btn {
+                min-height: 44px;
+                padding: 12px 20px;
+                font-size: 1rem;
+                touch-action: manipulation;
+            }
+        }
+        
+        /* High DPI Display Optimization */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .profile-avatar-large,
+            .stat-card,
+            .chart-container {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+    </style>
+</body>
+</html>
