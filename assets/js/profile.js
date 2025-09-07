@@ -391,13 +391,16 @@ function initializeCharts() {
 }
 
 function initializeTrendChart(analyses) {
-    const ctx = document.getElementById('trendChart').getContext('2d');
+    const canvas = document.getElementById('trendChart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
     
     const chartData = {
         labels: analyses.map(a => formatDate(a.timestamp)),
         datasets: [{
             label: 'Score MSE',
-            data: analyses.map(a => parseFloat(a.mseScore)),
+            data: analyses.map(a => parseFloat(a.mseScore || a.score || 0)),
             borderColor: '#667eea',
             backgroundColor: 'rgba(102, 126, 234, 0.1)',
             borderWidth: 2,
@@ -437,10 +440,14 @@ function initializeTrendChart(analyses) {
 }
 
 function initializeDistributionChart(analyses) {
-    const ctx = document.getElementById('distributionChart').getContext('2d');
+    const canvas = document.getElementById('distributionChart');
+    if (!canvas) return;
     
-    const healthyCount = analyses.filter(a => a.result === 'Sain').length;
-    const riskCount = analyses.filter(a => a.result === 'Risque de Parkinson').length;
+    const ctx = canvas.getContext('2d');
+    
+    // Use consistent result checking like elsewhere in the code
+    const healthyCount = analyses.filter(a => a.result === 'Sain' || a.result === 'healthy').length;
+    const riskCount = analyses.filter(a => a.result === 'Risque de Parkinson' || a.result === 'at-risk').length;
 
     const chartData = {
         labels: ['Résultats sains', 'Résultats à risque'],

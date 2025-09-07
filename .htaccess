@@ -1,0 +1,18 @@
+# Remove .html extension from URLs
+RewriteEngine On
+
+# Remove .html extension from displayed URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^.]+)$ $1.html [NC,L]
+
+# Redirect .html URLs to clean URLs (optional)
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1? [NC,L,R=301]
+
+# Handle index files
+DirectoryIndex index.html
+
+# Optional: Force HTTPS (if using SSL)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

@@ -55,6 +55,7 @@
         <div class="header-main">
             <div class="container">
                 <a href="index.html" class="logo">
+                <!-- Production: href="index" -->
                     <div class="logo-icon">🧠</div>
                     <div>
                         <div>ParkinsonDetect</div>
@@ -155,7 +156,7 @@
                 </div>
                 
                 <!-- Enhanced Results Card -->
-                <div class="result-card enhanced-result fade-in-on-scroll" id="resultCard">
+                <div class="result-card enhanced-result fade-in-on-scroll" id="resultCard" style="display: none;">
                     <!-- Result Header with Animation -->
                     <div class="result-header-enhanced stagger-item">
                         <div class="result-status-icon" id="statusIcon">✅</div>
@@ -172,8 +173,8 @@
                     <div class="main-result-container stagger-item">
                         <div class="result-visualization">
                             <div class="result-circle-enhanced">
-                                <div class="result-movement-type" id="movementType">Mouvement</div>
-                                <div class="result-classification" id="resultLabel">Normal</div>
+                                <div class="result-movement-type" id="movementType"></div>
+                                <div class="result-classification" id="resultLabel"></div>
                                 <div class="result-confidence">Confiance Élevée</div>
                             </div>
                             
@@ -187,10 +188,9 @@
                                     </div>
                                 </div>
                                 <div class="score-value-display">
-                                    <span class="score-number" id="scoreValue">0.094</span>
+                                    <span class="score-number" id="scoreValue"></span>
                                 </div>
                                 <div class="score-interpretation-enhanced" id="scoreInterpretation">
-                                    Score faible indique des mouvements normaux
                                 </div>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
                                 <div class="detail-card">
                                     <div class="detail-icon">📊</div>
                                     <div class="detail-content">
-                                        <div class="detail-value" id="windowsCount">3</div>
+                                        <div class="detail-value" id="windowsCount"></div>
                                         <div class="detail-label">Fenêtres d'Analyse</div>
                                         <div class="detail-description">Segments de données analysés</div>
                                     </div>
@@ -212,7 +212,7 @@
                                 <div class="detail-card">
                                     <div class="detail-icon">🎯</div>
                                     <div class="detail-content">
-                                        <div class="detail-value" id="thresholdValue">1.376</div>
+                                        <div class="detail-value" id="thresholdValue"></div>
                                         <div class="detail-label">Seuil de Détection</div>
                                         <div class="detail-description">Limite de classification système</div>
                                     </div>
@@ -243,17 +243,15 @@
                             <h4>Résumé de l'Analyse</h4>
                             <div class="summary-content" id="summaryContent">
                                 <p class="summary-text">
-                                    L'analyse de vos données de mouvement indique des schémas de mouvement normaux. 
-                                    Le score de reconstruction faible suggère que vos mouvements sont cohérents avec des mouvements sains.
                                 </p>
                                 <div class="analysis-metrics">
                                     <div class="metric-item">
                                         <span class="metric-label">Temps d'analyse:</span>
-                                        <span class="metric-value" id="analysisTime">< 2 secondes</span>
+                                        <span class="metric-value" id="analysisTime"></span>
                                     </div>
                                     <div class="metric-item">
                                         <span class="metric-label">Qualité des données:</span>
-                                        <span class="metric-value quality-good">Excellente</span>
+                                        <span class="metric-value quality-good"></span>
                                     </div>
                                 </div>
                             </div>
@@ -280,7 +278,7 @@
                             <span class="btn-icon">📄</span>
                             <span class="btn-text">Télécharger Rapport Détaillé</span>
                         </button>
-                        <button class="btn-enhanced btn-login" onclick="window.location.href='login.html'" id="loginToSaveBtn">
+                        <button class="btn-enhanced btn-login" onclick="window.location.href='login'" id="loginToSaveBtn">
                             <span class="btn-icon">🔐</span>
                             <span class="btn-text">Se connecter pour sauvegarder</span>
                         </button>
@@ -334,7 +332,7 @@
                 <div class="footer-section">
                     <h3>Support</h3>
                     <a href="#">Centre d'aide</a>
-                    <a href="index.html#contact">Contact Équipe</a>
+                    <a href="index#contact">Contact Équipe</a>
                     <a href="#">Support Technique</a>
                     <a href="#">Formation</a>
                     <a href="#">FAQ</a>
@@ -429,22 +427,8 @@
             if (ParkinsonDetect && ParkinsonDetect.downloadReport) {
                 ParkinsonDetect.downloadReport();
             } else {
-                // Fallback download functionality
-                const resultData = {
-                    score: document.getElementById('scoreValue')?.textContent || 'N/A',
-                    result: document.getElementById('resultLabel')?.textContent || 'N/A',
-                    windows: document.getElementById('windowsCount')?.textContent || 'N/A',
-                    threshold: document.getElementById('thresholdValue')?.textContent || 'N/A',
-                    date: new Date().toISOString()
-                };
-                
-                const dataStr = JSON.stringify(resultData, null, 2);
-                const dataBlob = new Blob([dataStr], { type: 'application/json' });
-                
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(dataBlob);
-                link.download = `parkinson-analysis-${new Date().toISOString().split('T')[0]}.json`;
-                link.click();
+                // Show notification that no analysis has been performed yet
+                alert('Veuillez d\'abord effectuer une analyse avant de télécharger un rapport.');
             }
         }
     </script>

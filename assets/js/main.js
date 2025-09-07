@@ -1,8 +1,8 @@
 // ParkinsonDetect - Main JavaScript Application
 // Configuration
 const API_CONFIG = {
-    baseUrl: 'https://parkinsonapi.ewr.appspot.com',
-    authToken: 'imsabbar777',
+    baseUrl: 'https://parkinsonapi.ew.r.appspot.com',  // Added dots!
+    authToken: 'APIAccessToken',
     endpoints: {
         predict: '/predict'
     }
@@ -967,6 +967,7 @@ function setupDragAndDrop(uploadArea) {
 }
 
 // Analysis Functions
+// Enhanced Analysis Functions with Better Error Handling
 async function analyzeData() {
     if (!appState.selectedFile) {
         showNotification('Veuillez sélectionner un fichier d\'abord.', 'error');
@@ -992,6 +993,10 @@ async function analyzeData() {
     try {
         showNotification('Connexion au système d\'analyse...', 'info');
         
+        // Add debugging
+        console.log('Making API request to:', `${API_CONFIG.baseUrl}${API_CONFIG.endpoints.predict}`);
+        console.log('With token:', API_CONFIG.authToken);
+        
         const response = await fetch(`${API_CONFIG.baseUrl}${API_CONFIG.endpoints.predict}`, {
             method: 'POST',
             headers: {
@@ -1000,30 +1005,42 @@ async function analyzeData() {
             body: formData
         });
 
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
+
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            // More specific error handling
+            if (response.status === 401) {
+                throw new Error('Erreur d\'authentification - Vérifiez votre token API');
+            } else if (response.status === 404) {
+                throw new Error('Endpoint API non trouvé - Vérifiez l\'URL de l\'API');
+            } else if (response.status >= 500) {
+                throw new Error('Erreur serveur - Veuillez réessayer plus tard');
+            } else {
+                throw new Error(`Erreur HTTP ${response.status}: ${response.statusText}`);
+            }
         }
 
         const result = await response.json();
+        console.log('API Response:', result);
         
         // Validate API response
         if (!result || typeof result.score === 'undefined') {
-            throw new Error('Réponse API invalide');
+            throw new Error('Réponse API invalide - Données manquantes');
         }
         
+        // Show success for REAL data
+        showNotification('Analyse terminée avec succès!', 'success');
         displayResults(result);
         
     } catch (error) {
         console.error('Analysis error:', error);
         
-        // Fallback to mock data for demo purposes
-        showNotification('Utilisation de données de démonstration pour l\'analyse...', 'warning');
+        // Show the ACTUAL error to user
+        showNotification(`Erreur d'analyse: ${error.message}`, 'error');
         
-        // Add realistic delay to simulate processing
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        // Now the function will simply end without displaying any mock data
         
-        const mockResult = generateMockResult();
-        displayResults(mockResult);
     } finally {
         showLoading(false);
         disableAnalyzeButton(false);
