@@ -385,7 +385,7 @@ function initializeCharts() {
         initializeDistributionChart(analyses);
         initializeMonthlyChart(analyses);
     } catch (error) {
-        console.error('Error initializing charts:', error);
+        console.error('Erreur d\'initialisation des graphiques:', error);
         showEmptyChartState();
     }
 }
@@ -780,12 +780,12 @@ function showAnalysisPreview(analysisId) {
     
     previewPanel.innerHTML = `
         <div class="preview-header">
-            <h4>Analysis Preview</h4>
+            <h4>Aperçu de l'analyse</h4>
             <button onclick="closeAnalysisPreview()" class="close-btn">×</button>
         </div>
         <div class="preview-content">
             <div class="preview-item">
-                <label>File:</label>
+                <label>Fichier:</label>
                 <span>${analysis.fileName}</span>
             </div>
             <div class="preview-item">
@@ -797,9 +797,9 @@ function showAnalysisPreview(analysisId) {
                 <span class="score-highlight">${parseFloat(analysis.mseScore || analysis.score || 0).toFixed(3)}</span>
             </div>
             <div class="preview-item">
-                <label>Result:</label>
+                <label>Résultat:</label>
                 <span class="status-badge ${isHealthy ? 'healthy' : 'risk'}">
-                    ${isHealthy ? '✅ Healthy' : '⚠️ At Risk'}
+                    ${isHealthy ? '✅ Sain' : '⚠️ À risque'}
                 </span>
             </div>
         </div>
@@ -855,7 +855,7 @@ function initializeTooltips() {
             }
         });
     } catch (error) {
-        console.error('Error initializing tooltips:', error);
+        console.error('Erreur d\'initialisation des infobulles:', error);
     }
 }
 
@@ -877,7 +877,7 @@ function initializeProgressRings() {
             }
         });
     } catch (error) {
-        console.error('Error initializing progress rings:', error);
+        console.error('Erreur d\'initialisation des anneaux de progression:', error);
     }
 }
 
@@ -889,7 +889,7 @@ function addFloatingActionButton() {
         const fab = document.createElement('button');
         fab.className = 'fab';
         fab.innerHTML = '↑';
-        fab.title = 'Scroll to top';
+        fab.title = 'Retour en haut';
         fab.onclick = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
@@ -907,7 +907,7 @@ function addFloatingActionButton() {
             }
         });
     } catch (error) {
-        console.error('Error adding floating action button:', error);
+        console.error('Erreur d\'ajout du bouton d\'action flottant:', error);
     }
 }
 
@@ -934,17 +934,17 @@ function showInsightsPanel() {
         
         if (insightsPanel) {
             insightsPanel.innerHTML = `
-                <div class="insights-title">AI Insights</div>
+                <div class="insights-title">Analyses IA</div>
                 <div class="insights-content">${insights}</div>
             `;
         }
     } catch (error) {
-        console.error('Error showing insights panel:', error);
+        console.error('Erreur d\'affichage du panneau d\'insights:', error);
     }
 }
 
 function generateInsights(analyses) {
-    if (analyses.length === 0) return 'No analysis data available for insights.';
+    if (analyses.length === 0) return 'Aucune donnée d\'analyse disponible pour les insights.';
     
     const stats = calculateStatistics(analyses);
     const recentAnalyses = analyses.slice(0, 5);
@@ -954,25 +954,25 @@ function generateInsights(analyses) {
     
     // Performance insights
     if (stats.averageScore < 1.0) {
-        insights.push('✅ Your motion patterns show consistently healthy characteristics.');
+        insights.push('✅ Vos schémas de mouvement montrent des caractéristiques constamment saines.');
     } else if (stats.averageScore > 1.5) {
-        insights.push('⚠️ Your recent analyses show patterns that may require attention.');
+        insights.push('⚠️ Vos analyses récentes montrent des schémas qui peuvent nécessiter une attention particulière.');
     } else {
-        insights.push('ℹ️ Your motion patterns are within normal variation ranges.');
+        insights.push('ℹ️ Vos schémas de mouvement se situent dans les plages de variation normales.');
     }
     
     // Trend insights
     if (trend === 'improving') {
-        insights.push('📈 Your recent motion patterns show improvement over time.');
+        insights.push('📈 Vos schémas de mouvement récents montrent une amélioration au fil du temps.');
     } else if (trend === 'declining') {
-        insights.push('📉 Consider consulting with a healthcare professional about recent changes.');
+        insights.push('📉 Envisagez de consulter un professionnel de la santé concernant les changements récents.');
     }
     
     // Frequency insights
     if (stats.totalAnalyses >= 10) {
-        insights.push('🏆 Excellent commitment to regular monitoring!');
+        insights.push('🏆 Excellent engagement dans un suivi régulier !');
     } else if (stats.totalAnalyses >= 5) {
-        insights.push('💪 Good progress with regular analysis tracking.');
+        insights.push('💪 Bons progrès dans le suivi régulier des analyses.');
     }
     
     return insights.join('<br><br>');
@@ -1082,7 +1082,7 @@ function viewAnalysisDetails(analysisId) {
             showNotification('Analyse non trouvée', 'error');
         }
     } catch (error) {
-        console.error('Error viewing analysis details:', error);
+        console.error('Erreur lors de la visualisation des détails d\'analyse:', error);
         showNotification('Erreur lors de l\'affichage des détails', 'error');
     }
 }
@@ -1106,7 +1106,7 @@ function refreshProfile() {
             showNotification('Profil actualisé!', 'success');
         }, 1000);
     } catch (error) {
-        console.error('Error refreshing profile:', error);
+        console.error('Erreur lors de l\'actualisation du profil:', error);
         showNotification('Erreur lors de l\'actualisation', 'error');
     }
 }

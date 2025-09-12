@@ -263,19 +263,36 @@ body:has(.medical-disclaimer) .terms-checkbox {
 }
 
 .custom-checkbox {
-    width: 18px;
+    width: 18px !important;
     height: 18px;
     border: 2px solid #dee2e6;
     border-radius: 4px;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     cursor: pointer;
     position: relative;
     transition: all 0.3s ease;
+    background-color: white;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
 }
 
 .custom-checkbox:checked {
     background: linear-gradient(135deg, #667eea, #764ba2);
     border-color: #667eea;
+}
+
+.custom-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+}
+
+.custom-checkbox:hover {
+    border-color: #667eea;
+    background-color: #f8f9fa;
 }
 
 .custom-checkbox:checked::after {
@@ -287,6 +304,9 @@ body:has(.medical-disclaimer) .terms-checkbox {
     color: white;
     font-size: 12px;
     font-weight: bold;
+    display: block;
+    text-align: center;
+    line-height: 1;
 }
 
 .checkbox-label {
